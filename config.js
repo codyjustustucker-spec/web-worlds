@@ -3,7 +3,7 @@ window.siteConfig = {
   siteShortName: "WEB WORLDS",
   version: "0.27",
   backend: {
-    apiBase: "",
+    apiBase: "https://web-worlds-scores.codyjustustucker.workers.dev/api",
     scoreModes: { desktop: "brick-breaker", mobile: "brick-breaker-mobile" },
     note: "Set apiBase to the deployed Cloudflare Worker URL ending in /api."
   },
