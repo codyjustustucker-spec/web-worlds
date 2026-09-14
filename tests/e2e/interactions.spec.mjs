@@ -45,8 +45,25 @@ test('Brick Breaker leaderboard degrades safely before the Worker endpoint is co
   await expect(stage).toBeVisible();
 });
 
-test('Engineering full-stack panel stays honest when backend is not configured', async ({ page }) => {
+test('Engineering full-stack panel reports a healthy configured backend', async ({ page }) => {
+  await page.route('**/api/health', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        status: 'ok',
+        worker: 'ok',
+        database: 'ok',
+        latencyMs: 39
+      })
+    });
+  });
+
   await page.goto('/engineering/');
-  await expect(page.locator('[data-backend-api-status]')).toContainText(/pending|awaiting|deployment/i);
-  await expect(page.locator('[data-backend-db-status]')).toContainText(/pending|awaiting|deployment/i);
+
+  await expect(page.locator('[data-backend-api-status]'))
+    .toContainText(/healthy|online|ok/i);
+
+  await expect(page.locator('[data-backend-db-status]'))
+    .toContainText(/healthy|online|ok/i);
 });
