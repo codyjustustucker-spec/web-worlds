@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "web-worlds-scores",
+  "main": "worker/src/index.mjs",
+  "compatibility_date": "2026-09-14",
+
+  "vars": {
+    "ALLOWED_ORIGIN": "https://web-worlds.pages.dev,https://v0-27-engineering.web-worlds.pages.dev",
+    "ENVIRONMENT": "production"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "web-worlds-scores",
+      "database_id": "53ead28f-47ef-4362-8b5f-282d4dae5053",
+      "migrations_dir": "worker/migrations",
+      "remote": true
+    }
+  ]
+}

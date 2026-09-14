@@ -6,6 +6,13 @@
   <meta name="description" content="Interactive frontend mechanics lab for Web Worlds.">
   <meta name="theme-color" content="#070a10">
   <title>Lab | Web Worlds</title>
+  <link rel="canonical" href="https://web-worlds.pages.dev/lab/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Worlds">
+  <meta property="og:title" content="Lab | Web Worlds">
+  <meta property="og:description" content="Interactive frontend mechanics lab for Web Worlds.">
+  <meta property="og:url" content="https://web-worlds.pages.dev/lab/">
+  <meta name="twitter:card" content="summary">
   <script>
     try {
       const t = localStorage.getItem('cody-web-worlds-theme');
@@ -14,6 +21,8 @@
   </script>
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles/lab.css">
+  <script src="../lib/core-utils.js" defer></script>
+  <script src="../lib/runtime-status.js" defer></script>
   <script src="../config.js" defer></script>
   <script src="../script.js" defer></script>
   <script src="lab.js" defer></script>
@@ -29,7 +38,7 @@
         <span class="brand-copy"><strong>Web Worlds</strong><small>INTERACTIVE FRONTEND SHOWCASE</small></span>
       </a>
 
-      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="../index.html" data-room-link="home">Home</a>
         <a href="../playground/index.html" data-room-link="playground">Playground</a>
         <a href="../3d/index.html" data-room-link="3d">3D</a>
@@ -37,10 +46,11 @@
         <a href="../room/index.html" data-room-link="room">Room</a>
         <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
         <a href="../about/index.html" data-room-link="about">About</a>
-        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+        <a href="../engineering/index.html" data-room-link="engineering">Engineering</a>
+        <div class="theme-switch mobile-theme" role="group" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
       </nav>
 
-      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+      <div class="theme-switch desktop-theme" role="group" aria-label="Choose visual theme">
         <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
         <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
         <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
@@ -368,7 +378,7 @@
             <div class="lab-module-head"><div><span>13 / WIND + SPRING</span><h3>Push it. Kick it.</h3></div><button class="lab-reset" type="button" data-force-reset>Reset</button></div>
             <p>Wind and both springs act on the same ball in the same room.</p>
             <div class="force-combo-toolbar">
-              <div class="lab-mini-controls" role="group" aria-label="Wind direction"><button data-wind-mode="left">← Left</button><button data-wind-mode="off" aria-pressed="true">Off</button><button data-wind-mode="right">Right →</button></div>
+              <div class="lab-mini-controls" role="group" aria-label="Wind direction"><button type="button" data-wind-mode="left">← Left</button><button type="button" data-wind-mode="off" aria-pressed="true">Off</button><button type="button" data-wind-mode="right">Right →</button></div>
               <div class="lab-diagnostics spring-diagnostics"><span>X IMPULSE <b data-spring-x>0</b></span><span>Y IMPULSE <b data-spring-y>0</b></span><span>SPEED <b data-spring-speed>0</b></span></div>
             </div>
             <div class="force-stage spring-stage-v12 wind-spring-stage" data-wind-spring-stage data-wind="off">
@@ -462,7 +472,7 @@
       <div class="container">
         <div class="section-heading reveal"><div><p class="eyebrow cool-only" data-royal-text="19 / GILDED DEPTH" data-scary-text="19 / CURSED DEPTH">19 / CSS DEPTH</p><p class="eyebrow cute-only">19 / CSS DEPTH ♡</p><h2 class="cool-only">Pick up an artifact.</h2><h2 class="cute-only">Pick up an artifact.</h2></div><p class="cool-only" data-royal-text="One royal pass suspended in gilded browser depth." data-scary-text="One omen card floating where the browser should not bend.">One smooth field card built from layered DOM, perspective, and rotation.</p><p class="cute-only">One tiny impossible pass made from ordinary browser layers. ♡</p></div>
         <div class="artifact-shelf artifact-shelf-v11 artifact-shelf-single" data-css3d-shelf>
-<button class="css3d-artifact artifact-card artifact-card-v14" data-css3d-artifact data-impossible-card aria-label="Flip the impossible field card">
+<button type="button" class="css3d-artifact artifact-card artifact-card-v14" data-css3d-artifact data-impossible-card aria-label="Flip the impossible field card">
             <span class="artifact-3d flat-card field-plate impossible-card"><i class="card-face"><b data-card-copy></b></i></span>
             <small class="cool-only" data-royal-text="COURT PASS" data-scary-text="OMEN CARD">FIELD CARD</small><small class="cute-only">MAGIC PASS</small>
           </button>
@@ -492,7 +502,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand"><strong>Web Worlds</strong><p>Theme-aware rooms sharing one lightweight frontend system.</p></div>
-      <div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div>
+      <div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a><a href="../engineering/index.html">Engineering</a></div>
     </div>
     <div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div>
   </footer>

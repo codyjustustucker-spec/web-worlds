@@ -6,6 +6,13 @@
   <meta name="description" content="Web Worlds: an interactive collection of playful browser worlds, puzzles, experiments, 3D scenes, and living systems.">
   <meta name="theme-color" content="#070a10">
   <title>Web Worlds</title>
+  <link rel="canonical" href="https://web-worlds.pages.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Worlds">
+  <meta property="og:title" content="Web Worlds">
+  <meta property="og:description" content="Web Worlds: an interactive collection of playful browser worlds, puzzles, experiments, 3D scenes, and living systems.">
+  <meta property="og:url" content="https://web-worlds.pages.dev/">
+  <meta name="twitter:card" content="summary">
   <script>
     try {
       const t = localStorage.getItem('cody-web-worlds-theme');
@@ -14,6 +21,8 @@
   </script>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles/home.css">
+  <script src="lib/core-utils.js" defer></script>
+  <script src="lib/runtime-status.js" defer></script>
   <script src="config.js" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -32,7 +41,7 @@
         </span>
       </a>
 
-      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html" data-room-link="home">Home</a>
         <a href="playground/index.html" data-room-link="playground">Playground</a>
         <a href="3d/index.html" data-room-link="3d">3D</a>
@@ -40,10 +49,11 @@
         <a href="room/index.html" data-room-link="room">Room</a>
         <a href="tunnel/index.html" data-room-link="tunnel">Tunnel</a>
         <a href="about/index.html" data-room-link="about">About</a>
-        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+        <a href="engineering/index.html" data-room-link="engineering">Engineering</a>
+        <div class="theme-switch mobile-theme" role="group" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
       </nav>
 
-      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+      <div class="theme-switch desktop-theme" role="group" aria-label="Choose visual theme">
         <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
         <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
         <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
@@ -256,7 +266,7 @@
         <a href="lab/index.html">Lab</a>
         <a href="room/index.html">Room</a>
         <a href="tunnel/index.html">Tunnel</a>
-        <a href="about/index.html">About</a>
+        <a href="about/index.html">About</a><a href="engineering/index.html">Engineering</a>
       </div>
     </div>
     <div class="container footer-bottom">

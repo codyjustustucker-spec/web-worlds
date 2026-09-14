@@ -6,19 +6,30 @@
   <meta name="description" content="A playable browser puzzle room in Web Worlds: drag, explore, switch themes, find secrets, and reach the exit.">
   <meta name="theme-color" content="#070a10">
   <title>Playground | Web Worlds</title>
+  <link rel="canonical" href="https://web-worlds.pages.dev/playground/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Worlds">
+  <meta property="og:title" content="Playground | Web Worlds">
+  <meta property="og:description" content="A playable browser puzzle room in Web Worlds: drag, explore, switch themes, find secrets, and reach the exit.">
+  <meta property="og:url" content="https://web-worlds.pages.dev/playground/">
+  <meta name="twitter:card" content="summary">
   <script>try { const t = localStorage.getItem('cody-web-worlds-theme'); if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t; } catch (_) {}</script>
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles/playground.css">
+  <script src="../lib/core-utils.js" defer></script>
+  <script src="../lib/runtime-status.js" defer></script>
   <script src="../config.js" defer></script>
   <script src="../script.js" defer></script>
+  <script src="../lib/leaderboard-client.js" defer></script>
   <script src="playground.js" defer></script>
+  <script src="leaderboard.js" defer></script>
 </head>
 <body class="room-page playground-page" data-page="playground">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="../index.html" aria-label="Web Worlds home" data-logo-secret><span class="brand-mark" aria-hidden="true">CW</span><span class="brand-copy"><strong>Web Worlds</strong><small>INTERACTIVE FRONTEND SHOWCASE</small></span></a>
-      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="../index.html" data-room-link="home">Home</a>
         <a href="../playground/index.html" data-room-link="playground">Playground</a>
         <a href="../3d/index.html" data-room-link="3d">3D</a>
@@ -26,9 +37,10 @@
         <a href="../room/index.html" data-room-link="room">Room</a>
         <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
         <a href="../about/index.html" data-room-link="about">About</a>
-        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+        <a href="../engineering/index.html" data-room-link="engineering">Engineering</a>
+        <div class="theme-switch mobile-theme" role="group" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
       </nav>
-      <div class="theme-switch desktop-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      <div class="theme-switch desktop-theme" role="group" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
       <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -111,6 +123,16 @@
             <b class="mobile-breaker-ball" data-mobile-breaker-ball></b>
           </div>
           <div class="mobile-status-row"><span>SCORE <strong data-mobile-breaker-score>0</strong></span><strong data-mobile-breaker-status>ACTIVE</strong></div>
+          <section class="leaderboard-shell leaderboard-shell-mobile" data-leaderboard data-leaderboard-mode="brick-breaker-mobile" aria-labelledby="mobile-leaderboard-title">
+            <div class="leaderboard-head"><div><span>GLOBAL / MOBILE</span><h4 id="mobile-leaderboard-title">Clear-time board</h4></div><button type="button" class="text-button small" data-score-refresh>Refresh</button></div>
+            <p class="leaderboard-status" data-leaderboard-status role="status">Checking score service…</p>
+            <ol class="leaderboard-list" data-leaderboard-list><li class="leaderboard-empty">Loading verified runs…</li></ol>
+            <div class="score-submit-row">
+              <label>DISPLAY NAME<input type="text" maxlength="20" autocomplete="nickname" data-score-name placeholder="Player"></label>
+              <button type="button" class="button score-submit" data-score-submit disabled>Submit clear</button>
+            </div>
+            <p class="score-result" data-score-result aria-live="polite">Clear the field to create a submit-ready run.</p>
+          </section>
         </article>
       </div>
     </section>
@@ -218,6 +240,16 @@
             <b class="pg-breaker-ball" data-pg-breaker-ball></b>
             <strong class="pg-breaker-win" data-pg-breaker-win hidden>FIELD CLEAR ✦</strong>
           </div>
+          <section class="leaderboard-shell" data-leaderboard data-leaderboard-mode="brick-breaker" aria-labelledby="desktop-leaderboard-title">
+            <div class="leaderboard-head"><div><span>GLOBAL / DESKTOP</span><h4 id="desktop-leaderboard-title">Clear-time board</h4></div><button type="button" class="text-button small" data-score-refresh>Refresh</button></div>
+            <p class="leaderboard-status" data-leaderboard-status role="status">Checking score service…</p>
+            <ol class="leaderboard-list" data-leaderboard-list><li class="leaderboard-empty">Loading verified runs…</li></ol>
+            <div class="score-submit-row">
+              <label>DISPLAY NAME<input type="text" maxlength="20" autocomplete="nickname" data-score-name placeholder="Player"></label>
+              <button type="button" class="button score-submit" data-score-submit disabled>Submit clear</button>
+            </div>
+            <p class="score-result" data-score-result aria-live="polite">Clear the field to create a submit-ready run. Failed submissions stay saved locally.</p>
+          </section>
         </article>
 
       </section>
@@ -228,7 +260,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p>Theme-aware rooms sharing one lightweight frontend system.</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div></div><div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div></footer>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p>Theme-aware rooms sharing one lightweight frontend system.</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a><a href="../engineering/index.html">Engineering</a></div></div><div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div></footer>
   <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
 </body>
 </html>

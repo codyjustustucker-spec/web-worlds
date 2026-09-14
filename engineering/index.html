@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Engineering evidence behind Web Worlds: architecture, automated testing, accessibility, performance, reliability, and deployment.">
+  <meta name="theme-color" content="#070a10">
+  <title>Engineering | Web Worlds</title>
+  <link rel="canonical" href="https://web-worlds.pages.dev/engineering/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Worlds">
+  <meta property="og:title" content="Engineering | Web Worlds">
+  <meta property="og:description" content="Measured quality, automated tests, accessibility work, performance evidence, and the delivery pipeline behind Web Worlds.">
+  <meta property="og:url" content="https://web-worlds.pages.dev/engineering/">
+  <meta name="twitter:card" content="summary">
+  <script>try { const t = localStorage.getItem('cody-web-worlds-theme'); if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t; } catch (_) {}</script>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/engineering.css">
+  <script src="../lib/core-utils.js" defer></script>
+  <script src="../lib/runtime-status.js" defer></script>
+  <script src="../config.js" defer></script>
+  <script src="../lib/leaderboard-client.js" defer></script>
+  <script src="../script.js" defer></script>
+  <script src="engineering.js" defer></script>
+</head>
+<body class="room-page engineering-page" data-page="engineering">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="Web Worlds home">
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        <span class="brand-copy"><strong>Web Worlds</strong><small>ENGINEERING / PROOF</small></span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="../index.html" data-room-link="home">Home</a>
+        <a href="../playground/index.html" data-room-link="playground">Playground</a>
+        <a href="../3d/index.html" data-room-link="3d">3D</a>
+        <a href="../lab/index.html" data-room-link="lab">Lab</a>
+        <a href="../room/index.html" data-room-link="room">Room</a>
+        <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="../about/index.html" data-room-link="about">About</a>
+        <a href="../engineering/index.html" data-room-link="engineering">Engineering</a>
+        <div class="theme-switch mobile-theme" role="group" aria-label="Choose visual theme">
+          <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
+        </div>
+      </nav>
+      <div class="theme-switch desktop-theme" role="group" aria-label="Choose visual theme">
+        <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
+      </div>
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <noscript><p class="engineering-noscript">The Engineering dashboard uses JavaScript to load its verified release snapshot and run live client checks. The rest of Web Worlds remains navigable without it.</p></noscript>
+
+  <main id="main">
+    <section class="engineering-hero">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="container engineering-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-theme-copy="engineering.eyebrow">ENGINEERING / PROOF</p>
+          <h1 data-theme-copy="engineering.title">Under the hood.</h1>
+          <p class="lede" data-theme-copy="engineering.lede">Measured quality, automated tests, accessibility work, performance evidence, and the delivery pipeline behind Web Worlds.</p>
+          <div class="release-chip-row" aria-label="Project engineering summary">
+            <span class="release-chip">Vanilla JS</span>
+            <span class="release-chip">Playwright</span>
+            <span class="release-chip">GitHub Actions</span>
+            <span class="release-chip">Cloudflare Pages</span>
+            <span class="release-chip">Worker + D1</span>
+          </div>
+        </div>
+
+        <div class="engineering-console reveal" aria-label="Release quality dashboard">
+          <div class="console-head"><span>release://web-worlds</span><span class="console-lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="status-grid">
+            <div class="status-card"><small>Release</small><strong data-release-version>v0.27</strong><p data-release-name>Production Hardening + Full-Stack Proof</p></div>
+            <div class="status-card"><small>Artifact QA</small><strong class="status-value" data-artifact-status data-status="pending">Loading…</strong><p data-artifact-note>Reading verified release snapshot.</p></div>
+            <div class="status-card"><small>Automated suite</small><strong class="status-value" data-suite-status data-status="pending">Loading…</strong><p data-suite-note>Unit, browser, accessibility, and link checks.</p></div>
+            <div class="status-card"><small>Performance</small><strong class="status-value" data-lighthouse-status data-status="pending">Not measured</strong><p>Lighthouse values stay blank until a real audit is recorded.</p></div>
+          </div>
+          <div class="truth-note">No decorative green lights: measured, pending, and failed states are rendered separately.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="architecture">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">01 / ARCHITECTURE</p><h2>Simple runtime.<br>Serious workflow.</h2></div><p>The product remains deliberately lightweight: static HTML, CSS, and JavaScript at the edge, with an optional Worker + D1 service for persistent scores. Tooling surrounds the runtime instead of replacing it.</p></div>
+        <div class="architecture-board reveal" aria-label="Web Worlds delivery architecture">
+          <article class="arch-node"><span>01 / SOURCE</span><strong>Vanilla frontend</strong><p>Route-level HTML and CSS, shared theme/state behavior, plus focused Three.js and Matter.js experiences.</p></article>
+          <article class="arch-node"><span>02 / QUALITY</span><strong>Automated checks</strong><p>Linting, unit tests, browser smoke tests, accessibility scans, and internal-link validation.</p></article>
+          <article class="arch-node"><span>03 / API</span><strong>Worker + D1</strong><p>Validated score submissions, persistent ranking, health checks, and failure-isolated network behavior.</p></article>
+          <article class="arch-node"><span>04 / DELIVERY</span><strong>GitHub Actions</strong><p>Frontend and backend checks run before a release is treated as verified.</p></article>
+          <article class="arch-node"><span>05 / PRODUCTION</span><strong>Cloudflare edge</strong><p>Pages serves the static product while the Worker and D1 remain optional network services.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="testing">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">02 / AUTOMATED TESTING</p><h2>Fun is allowed.<br>Regression is not.</h2></div><p>The suite focuses on behavior that matters: routes booting, themes persisting, critical controls working, reduced-motion support, and quality data staying honest.</p></div>
+        <div class="metric-grid reveal">
+          <article class="metric-card"><small>Unit cases</small><strong data-unit-count>—</strong><p>Pure utilities and configuration integrity.</p></article>
+          <article class="metric-card"><small>E2E cases</small><strong data-e2e-count>—</strong><p>Critical route, theme, and interaction flows.</p></article>
+          <article class="metric-card"><small>A11y cases</small><strong data-a11y-count>—</strong><p>Automated axe scans plus reduced-motion checks.</p></article>
+          <article class="metric-card"><small>API cases</small><strong data-api-count>—</strong><p>Validation, persistence, health, ordering, CORS, and failure behavior.</p></article>
+          <article class="metric-card"><small>Internal links</small><strong data-link-count>—</strong><p>Local href/src targets validated from source.</p></article>
+        </div>
+        <div class="quality-layout reveal" style="margin-top:1rem;">
+          <div class="panel">
+            <div class="panel-head"><h3>Quality suite</h3><span data-quality-verified>release snapshot</span></div>
+            <ul class="test-list" data-test-list></ul>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Browser strategy</h3><span>outcome-based tests</span></div>
+            <ul class="test-list">
+              <li data-status="pass"><span class="check-dot"></span><span class="test-copy"><strong>Chromium</strong><small>Primary interaction and route coverage.</small></span><span class="test-count">critical</span></li>
+              <li data-status="pending"><span class="check-dot"></span><span class="test-copy"><strong>Firefox</strong><small>Cross-browser smoke project is configured for CI.</small></span><span class="test-count">CI</span></li>
+              <li data-status="pending"><span class="check-dot"></span><span class="test-copy"><strong>WebKit</strong><small>Cross-browser smoke project is configured for CI.</small></span><span class="test-count">CI</span></li>
+              <li data-status="pass"><span class="check-dot"></span><span class="test-copy"><strong>Mobile viewport</strong><small>Representative touch-sized layout validation.</small></span><span class="test-count">critical</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="performance">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">03 / PERFORMANCE</p><h2>Measure first.<br>Optimize second.</h2></div><p>Heavy interactive routes are judged differently from lightweight content pages. Asset size is measured directly; Lighthouse fields remain intentionally empty until a reproducible audit is recorded.</p></div>
+        <div class="metric-grid reveal">
+          <article class="metric-card"><small>JavaScript</small><strong data-size-js>—</strong><p>First-party JavaScript source.</p></article>
+          <article class="metric-card"><small>CSS</small><strong data-size-css>—</strong><p>All route bundles combined; one bundle loads per route.</p></article>
+          <article class="metric-card"><small>HTML</small><strong data-size-html>—</strong><p>All production pages.</p></article>
+          <article class="metric-card"><small>Total source</small><strong data-size-total>—</strong><p>Measured release source footprint.</p></article>
+        </div>
+        <div class="performance-board reveal">
+          <div class="panel-head" style="padding:0 0 1rem;border:0;"><h3>Measured source composition</h3><span>uncompressed first-party release source</span></div>
+          <div class="performance-bars" data-source-bars></div>
+        </div>
+        <div class="performance-board reveal">
+          <div class="panel-head" style="padding:0 0 1rem;border:0;"><h3>Lighthouse release metrics</h3><span>truthful nulls are better than fake 100s</span></div>
+          <div class="performance-bars" data-performance-bars></div>
+          <div class="history-shell" data-history-shell><p>Performance history begins when reproducible Lighthouse data exists.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="accessibility">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">04 / ACCESSIBILITY</p><h2>Playful does not<br>mean careless.</h2></div><p>Web Worlds targets WCAG 2.2 AA where applicable. Automated scans are useful evidence, not a substitute for keyboard, focus, contrast, motion, and screen-reader review.</p></div>
+        <div class="quality-layout reveal">
+          <div class="panel"><div class="panel-head"><h3>Accessibility work</h3><span>v0.26 baseline</span></div><ul class="a11y-list">
+            <li data-status="pass"><span class="check-dot"></span><span class="a11y-copy"><strong>Keyboard + focus</strong><small>Skip links, semantic controls, visible focus, menu Escape handling.</small></span><span class="a11y-state">reviewed</span></li>
+            <li data-status="pass"><span class="check-dot"></span><span class="a11y-copy"><strong>Reduced motion</strong><small>Shared JS avoids ambient motion; the v0.26 baseline established a global CSS reduction guard.</small></span><span class="a11y-state">supported</span></li>
+            <li data-status="pass"><span class="check-dot"></span><span class="a11y-copy"><strong>Theme controls</strong><small>Theme switchers are exposed as labeled control groups with pressed state.</small></span><span class="a11y-state">semantic</span></li>
+            <li data-status="warn"><span class="check-dot"></span><span class="a11y-copy"><strong>Interactive visual worlds</strong><small>Complex canvas/physics experiences have fallbacks, but full non-visual equivalence is outside the current scope.</small></span><span class="a11y-state">documented</span></li>
+          </ul></div>
+          <div class="panel"><div class="panel-head"><h3>Standard</h3><span>honest target</span></div><div style="padding:1.1rem;"><p style="margin:0;color:var(--muted);">Target: <strong style="color:var(--text);">WCAG 2.2 AA where applicable</strong>. Automated axe checks are configured for major routes. This page does not claim formal compliance certification.</p><p style="margin:1rem 0 0;color:var(--muted);">The project treats accessibility findings as engineering work, not a score badge.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="reliability">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">05 / RELIABILITY</p><h2>Check the machine<br>while it is running.</h2></div><p>These are live client-side checks against the site currently serving this page. They are intentionally separate from release-time CI evidence.</p></div>
+        <div class="reliability-layout reveal">
+          <div class="panel">
+            <div class="panel-head"><h3>Live production checks</h3><span data-live-summary aria-live="polite">waiting…</span></div>
+            <ul class="live-check-list" data-live-checks aria-live="polite"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Failure isolation</h3><span>degrade, do not cascade</span></div>
+            <ul class="test-list">
+              <li data-status="pass"><span class="check-dot"></span><span class="test-copy"><strong>3D dependency fallback</strong><small>Missing Three.js reveals an explicit fallback instead of breaking navigation.</small></span><span class="test-count">isolated</span></li>
+              <li data-status="pass"><span class="check-dot"></span><span class="test-copy"><strong>Physics dependency fallback</strong><small>Missing Matter.js fails the Room experience locally without taking down the site.</small></span><span class="test-count">isolated</span></li>
+              <li data-status="pass"><span class="check-dot"></span><span class="test-copy"><strong>Engineering data fallback</strong><small>Missing metrics render unavailable states rather than fabricated success.</small></span><span class="test-count">honest</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="fullstack">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">06 / FULL-STACK PROOF</p><h2>Optional network.<br>Real persistence.</h2></div><p>Brick Breaker can publish completed runs through a small Cloudflare Worker backed by D1. Core gameplay never depends on the network, so the leaderboard can fail without taking the playground with it.</p></div>
+        <div class="backend-flow reveal" aria-label="Full-stack score architecture">
+          <article><span>01</span><strong>Browser</strong><small>Completes a run and keeps pending scores locally until submission succeeds.</small></article>
+          <i aria-hidden="true">→</i>
+          <article><span>02</span><strong>Worker API</strong><small>Validates names, mode, score, duration, origin, body size, and submission rate.</small></article>
+          <i aria-hidden="true">→</i>
+          <article><span>03</span><strong>D1</strong><small>Stores completed runs and serves deterministic score/time ordering.</small></article>
+        </div>
+        <div class="backend-health reveal">
+          <article class="backend-health-card"><small>Score API</small><strong class="status-value" data-backend-api-status data-status="pending">Awaiting check</strong><p data-backend-api-note>Live health uses the configured Worker endpoint.</p></article>
+          <article class="backend-health-card"><small>Database</small><strong class="status-value" data-backend-db-status data-status="pending">Awaiting check</strong><p data-backend-db-note>D1 status comes from a real lightweight query.</p></article>
+          <article class="backend-health-card"><small>API latency</small><strong data-backend-latency>—</strong><p>Browser-to-Worker health request, not synthetic uptime.</p></article>
+          <article class="backend-health-card"><small>Failure mode</small><strong>Gameplay survives</strong><p>Network errors preserve the completed local run and expose retry feedback.</p></article>
+        </div>
+        <div class="api-endpoints reveal">
+          <code>GET /api/scores</code><code>POST /api/scores</code><code>GET /api/health</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="pipeline">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">07 / DELIVERY PIPELINE</p><h2>From edit<br>to production.</h2></div><p>The project keeps deployment boring on purpose. Frontend and API quality checks run first, then GitHub and Cloudflare handle the static and serverless release paths.</p></div>
+        <div class="pipeline reveal" aria-label="Delivery pipeline">
+          <article class="pipeline-step"><b>01</b><strong>Local change</strong><small>HTML, CSS, JS, tests, or docs.</small></article>
+          <article class="pipeline-step"><b>02</b><strong>Lint + unit</strong><small>Syntax, utilities, configuration.</small></article>
+          <article class="pipeline-step"><b>03</b><strong>Browser QA</strong><small>Routes, themes, critical flows.</small></article>
+          <article class="pipeline-step"><b>04</b><strong>Accessibility</strong><small>axe scans + motion checks.</small></article>
+          <article class="pipeline-step"><b>05</b><strong>API tests</strong><small>Validation, D1 behavior, health, CORS.</small></article>
+          <article class="pipeline-step"><b>06</b><strong>GitHub</strong><small>main remains the production source.</small></article>
+          <article class="pipeline-step"><b>07</b><strong>Cloudflare</strong><small>Pages plus separately deployed Worker/D1.</small></article>
+          <article class="pipeline-step"><b>08</b><strong>Live checks</strong><small>Routes, assets, and configured API verified in-browser.</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="engineering-section" id="production">
+      <div class="container">
+        <div class="engineering-section-head reveal"><div><p class="eyebrow">08 / PRODUCTION</p><h2>Small stack.<br>Clean edges.</h2></div><p>v0.27 keeps the static frontend simple while adding an optional Cloudflare Worker + D1 score service, explicit failure isolation, API tests, and deployment-ready security controls.</p></div>
+        <div class="production-grid reveal">
+          <article class="production-card"><span>HOSTING</span><strong data-production-host>Cloudflare Pages</strong><p>Static deployment from the GitHub production branch.</p></article>
+          <article class="production-card"><span>HARDENING</span><strong>Safe response headers</strong><p>nosniff, frame protection, referrer policy, and restricted browser permissions.</p></article>
+          <article class="production-card"><span>DISCOVERY</span><strong>Metadata + sitemap</strong><p>Canonical URLs, Open Graph metadata, robots.txt, sitemap.xml, and a custom 404.</p></article>
+          <article class="production-card"><span>SERVERLESS</span><strong>Worker + D1</strong><p>Optional score persistence with validation, prepared statements, health checks, and no production database use in tests.</p></article>
+        </div>
+        <div class="cta-shell reveal" style="margin-top:1rem;"><div><p class="eyebrow">SOURCE / CASE STUDY</p><h2>Inspect the work.</h2><p>The repository documents architecture, testing strategy, performance decisions, known limitations, and the reasoning behind keeping the production runtime framework-free.</p></div><div class="cta-actions"><a class="button" href="https://github.com/codyjustustucker-spec/web-worlds" target="_blank" rel="noreferrer">View GitHub ↗</a><a class="text-button" href="../about/index.html">About the builder →</a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p>Strange little worlds. Extremely tidy machinery.</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a><a href="../engineering/index.html">Engineering</a></div></div><div class="container footer-bottom"><span>Web Worlds v<span data-footer-version>0.27</span></span><span>Current theme: <span data-theme-label>Cool mode</span></span></div></footer>
+</body>
+</html>

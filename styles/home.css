@@ -1,4 +1,4 @@
-/* Web Worlds v0.25 — home page CSS bundle. Generated from the consolidated v0.20 stylesheet while preserving rule order. */
+/* Web Worlds v0.27 — home page CSS bundle. Generated from the consolidated v0.20 stylesheet while preserving rule order. */
 :root {
   color-scheme: dark;
   --bg: #070a10;
@@ -4315,3 +4315,48 @@ html[data-theme="royal"] body{background-size:420px 420px,auto,auto!important;}
   .hub-hero{padding:1.65rem 0 2.2rem!important;}
   .world-system{min-height:400px;padding-block:48px;}
 }
+
+
+/* v0.26 accessibility: honor explicit reduced-motion preference without changing layout. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* v0.26 navigation: eight routes remain comfortable before the phone breakpoint. */
+@media (max-width: 1080px) and (min-width: 761px) {
+  .nav-wrap { position: relative; }
+  .theme-switch.desktop-theme { display: none; }
+  .menu-button { display: block; position: relative; z-index: 202; }
+  .site-nav {
+    position: absolute;
+    top: calc(100% + .55rem);
+    right: 0;
+    width: min(360px, calc(100vw - 2rem));
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: .65rem;
+    border-radius: var(--radius-md);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-7px) scale(.985);
+    transform-origin: top right;
+    transition: opacity .18s ease, transform .18s var(--ease), visibility 0s linear .18s;
+    z-index: 201;
+  }
+  .site-nav.open { opacity:1; visibility:visible; pointer-events:auto; transform:none; transition-delay:0s; }
+  .site-nav a { padding:.76rem .86rem; font-size:.92rem; }
+  .site-nav .mobile-theme { display:flex; margin-top:.45rem; flex-wrap:wrap; }
+}
+
+/* v0.27 runtime notice: only shown for intentionally surfaced degraded states. */
+.runtime-notice{position:fixed;left:50%;bottom:1rem;z-index:9999;transform:translateX(-50%);max-width:min(680px,calc(100% - 2rem));padding:.7rem .9rem;border:1px solid var(--border-strong);border-radius:12px;background:var(--surface-strong);color:var(--text);box-shadow:var(--shadow);font-size:.78rem;line-height:1.4}.runtime-notice[hidden]{display:none}
