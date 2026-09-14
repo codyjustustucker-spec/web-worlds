@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A playable browser puzzle room in Web Worlds: drag, explore, switch themes, find secrets, and reach the exit.">
+  <meta name="theme-color" content="#070a10">
+  <title>Playground | Web Worlds</title>
+  <script>try { const t = localStorage.getItem('cody-web-worlds-theme'); if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t; } catch (_) {}</script>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/playground.css">
+  <script src="../config.js" defer></script>
+  <script src="../script.js" defer></script>
+  <script src="playground.js" defer></script>
+</head>
+<body class="room-page playground-page" data-page="playground">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="Web Worlds home" data-logo-secret><span class="brand-mark" aria-hidden="true">CW</span><span class="brand-copy"><strong>Web Worlds</strong><small>INTERACTIVE FRONTEND SHOWCASE</small></span></a>
+      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+        <a href="../index.html" data-room-link="home">Home</a>
+        <a href="../playground/index.html" data-room-link="playground">Playground</a>
+        <a href="../3d/index.html" data-room-link="3d">3D</a>
+        <a href="../lab/index.html" data-room-link="lab">Lab</a>
+        <a href="../room/index.html" data-room-link="room">Room</a>
+        <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="../about/index.html" data-room-link="about">About</a>
+        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      </nav>
+      <div class="theme-switch desktop-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="playground-intro">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="container playground-intro-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-theme-copy="playground.hero.eyebrow">PLAYGROUND / CHAPTER 01</p>
+          <h1 data-theme-copy="playground.hero.title">Grab it. Get it to the bottom.</h1>
+          <p class="lede" data-theme-copy="playground.hero.lede">A browser puzzle built from pointer events, collision logic, shared state, hidden secrets, and four visual worlds.</p>
+        </div>
+        <div class="playground-brief reveal">
+          <strong>Objective</strong>
+          <span>Reach the exit.</span>
+          <strong>Optional</strong>
+          <span>Find all 3 secrets.</span>
+          <strong>Useful clue</strong>
+          <span>Sometimes the other theme knows something you do not.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="playground-mobile-fallback mobile-playground" data-playground-mobile aria-label="Mobile Playground">
+      <div class="container mobile-playground-shell">
+        <div class="mobile-playground-head reveal">
+          <p class="eyebrow" data-theme-copy="playground.mobile.eyebrow">TOUCH PLAYGROUND</p>
+          <h2 data-theme-copy="playground.mobile.title">Small screen. Real toys.</h2>
+          <p data-theme-copy="playground.mobile.note">A compact touch-first set of experiments. Same worlds, fewer elbows.</p>
+          <nav class="mobile-toy-index" aria-label="Mobile Playground toys">
+            <a href="#mobile-corridor">Corridor</a><a href="#mobile-bridge">Bridge</a><a href="#mobile-magnet">Magnet</a><a href="#mobile-breaker">Brick Breaker</a>
+          </nav>
+        </div>
+
+        <article class="mobile-toy-card reveal" id="mobile-corridor" data-mobile-corridor>
+          <div class="mobile-toy-title"><div><span>01 / COLLISION</span><h3>Thread the corridor</h3></div><button type="button" class="text-button small" data-mobile-corridor-reset>Reset</button></div>
+          <p>Drag the core around the walls and into END.</p>
+          <div class="mobile-corridor-stage" data-mobile-corridor-stage>
+            <i class="mobile-wall" style="--x:8%;--y:25%;--w:60%;--h:4%"></i>
+            <i class="mobile-wall" style="--x:32%;--y:49%;--w:60%;--h:4%"></i>
+            <i class="mobile-wall" style="--x:8%;--y:73%;--w:60%;--h:4%"></i>
+            <div class="mobile-corridor-player" data-mobile-corridor-player role="button" tabindex="0" aria-label="Draggable corridor player">◆</div>
+            <span class="mobile-corridor-end" data-mobile-corridor-end>END</span>
+            <strong class="mobile-win" data-mobile-corridor-win hidden>ROUTE CLEAR</strong>
+          </div>
+        </article>
+
+        <article class="mobile-toy-card reveal" id="mobile-bridge" data-mobile-bridge>
+          <div class="mobile-toy-title"><div><span>02 / ROTATION</span><h3>Turn the bridge</h3></div><button type="button" class="text-button small" data-mobile-bridge-reset>Reset</button></div>
+          <p>Rotate it until the crossing lines up.</p>
+          <div class="mobile-bridge-stage">
+            <span class="mobile-bank left">START</span><span class="mobile-bank right">GOAL</span>
+            <div class="mobile-bridge" data-mobile-bridge-bar><i></i></div>
+          </div>
+          <label class="mobile-range-label">ANGLE <output data-mobile-bridge-angle>-35°</output><input data-mobile-bridge-input type="range" min="-42" max="42" value="-35" step="1"></label>
+          <div class="mobile-status-row"><span>PATH</span><strong data-mobile-bridge-state>BLOCKED</strong></div>
+        </article>
+
+        <article class="mobile-toy-card reveal" id="mobile-magnet" data-mobile-magnet>
+          <div class="mobile-toy-title"><div><span>03 / FORCE FIELD</span><h3>Push or pull</h3></div><button type="button" class="text-button small" data-mobile-magnet-reset>Reset</button></div>
+          <p>One magnet, one puck. Pull it in, push it away, or switch the field off.</p>
+          <div class="mobile-magnet-controls mobile-magnet-controls-single">
+            <div data-mobile-magnet-controls="a"><b>FIELD</b><button type="button" data-mode="attract">Attract</button><button type="button" data-mode="repel">Repel</button><button type="button" data-mode="off">Off</button></div>
+          </div>
+          <div class="mobile-magnet-stage mobile-magnet-stage-single" data-mobile-magnet-stage>
+            <span class="mobile-magnet-node a" data-mobile-magnet-id="a"><b>MAG</b><small>ATTRACT</small></span>
+            <button type="button" class="mobile-metal-puck" data-mobile-metal-puck aria-label="Draggable metal puck">●</button>
+            <span class="mobile-field-caption">single field</span>
+          </div>
+        </article>
+
+        <article class="mobile-toy-card reveal" id="mobile-breaker" data-mobile-breaker>
+          <div class="mobile-toy-title"><div><span>04 / ARCADE</span><h3>Brick Breaker</h3></div><button type="button" class="text-button small" data-mobile-breaker-reset>Reset</button></div>
+          <p>Move the paddle, break the field, and keep the score climbing.</p>
+          <label class="mobile-range-label">POSITION <output data-mobile-breaker-value>50%</output><input data-mobile-breaker-input type="range" min="0" max="100" value="50"></label>
+          <div class="mobile-breaker-room" data-mobile-breaker-room tabindex="0" aria-label="Brick Breaker game. Use the slider or arrow keys to move the paddle.">
+            <div class="mobile-breaker-bricks" data-mobile-breaker-bricks></div>
+            <i class="mobile-breaker-paddle" data-mobile-breaker-paddle></i>
+            <b class="mobile-breaker-ball" data-mobile-breaker-ball></b>
+          </div>
+          <div class="mobile-status-row"><span>SCORE <strong data-mobile-breaker-score>0</strong></span><strong data-mobile-breaker-status>ACTIVE</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="playground-desktop" data-playground-desktop>
+      <div class="container playground-toolbar" aria-label="Playground status and controls">
+        <div class="playground-hud">
+          <span class="hud-dot" aria-hidden="true"></span>
+          <span>Secrets: <strong data-secret-count>0 / 3</strong></span>
+          <span class="hud-divider" aria-hidden="true"></span>
+          <span data-game-status aria-live="polite">Drag the core to begin.</span>
+        </div>
+        <button class="text-button small" type="button" data-playground-reset>Reset Playground</button>
+      </div>
+
+      <div class="container playground-frame">
+        <div class="playground-level" data-playground-level aria-label="Playable drag puzzle">
+          <div class="level-grid" aria-hidden="true"></div>
+
+          <div class="chapter-label label-grab"><span>01</span><strong>GRAB</strong><small>Pick up the player.</small></div>
+                    <div class="chapter-label label-block"><span>02</span><strong data-theme-copy="playground.move.label">MOVE</strong><small data-theme-copy="playground.move.note">Clear the passage.</small></div>
+          <div class="chapter-label label-shift"><span>03</span><strong>SHIFT</strong><small>Inspect all four worlds.</small></div>
+          <div class="chapter-label label-finish"><span>04</span><strong>EXIT</strong><small>Reach the final zone.</small></div>
+
+          <div class="tutorial-group" data-tutorial-group>
+            <button class="pg-secret secret-one secret-tutorial" type="button" data-secret-id="tutorial" aria-label="Collect tutorial secret"><span>✦</span></button>
+            <div class="collectible-tutorial" data-collectible-tutorial>
+              <strong>Secrets are hidden throughout the Playground.</strong>
+              <span>Click the glowing bubble.</span>
+            </div>
+          </div>
+          <div class="start-note"><strong>Grab me.</strong><span>Get me to the bottom.</span></div>
+
+          <!-- Block chamber. The lower wall has one narrow exit, sealed by the MOVE block. -->
+          <div class="pg-wall" style="--x:0%;--y:22%;--w:37%;--h:1.1%"></div>
+          <div class="pg-wall" style="--x:63%;--y:22%;--w:37%;--h:1.1%"></div>
+          <div class="pg-wall" style="--x:0%;--y:31%;--w:44%;--h:1.2%"></div>
+          <div class="pg-wall" style="--x:56%;--y:31%;--w:44%;--h:1.2%"></div>
+          <!-- Hidden cache remains beneath the movable block; there is no required parking destination. -->
+          <button class="pg-secret secret-two" type="button" data-secret-id="cache" aria-label="Collect hidden cache secret"><span>✦</span></button>
+          <div class="pg-block pg-draggable" data-game-block data-draggable="block" data-start-x="50" data-start-y="28" data-start-anchor=".secret-two" role="button" tabindex="0" aria-label="Movable obstacle block"><span>MOVE</span></div>
+
+          <!-- Clue interface gets its own protected vertical space. -->
+          <div class="theme-clue-panel">
+            <p class="eyebrow">FOUR-WORLD LOCK</p>
+            <div class="theme-clue cool-clue"><span>Signal digit</span><strong>4</strong></div>
+            <div class="theme-clue cute-clue"><span>Charm digit</span><strong>7</strong></div>
+            <div class="theme-clue royal-clue"><span>Seal digit</span><strong>2</strong></div>
+            <div class="theme-clue scary-clue"><span>Omen digit</span><strong>9</strong></div>
+            <label for="theme-code">Four-digit code · Cool → Cute → Royal → Scary</label>
+            <div class="code-entry"><input id="theme-code" data-theme-code inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="code-feedback"><button type="button" class="button small" data-code-submit>Unlock</button></div>
+            <small id="code-feedback" data-code-feedback>Four worlds. Four digits.</small>
+          </div>
+
+          <!-- Physical gate stays well below the UI. -->
+          <div class="pg-wall" style="--x:0%;--y:61%;--w:34%;--h:1.2%"></div>
+          <div class="pg-wall" style="--x:66%;--y:61%;--w:34%;--h:1.2%"></div>
+          <div class="pg-gate" data-game-gate style="--x:34%;--y:61%;--w:32%;--h:1.6%"><span>LOCKED</span></div>
+
+          <!-- Short post-gate zig-zag and the final optional secret. -->
+          <div class="pg-wall" style="--x:0%;--y:72%;--w:67%;--h:1.1%"></div>
+          <div class="pg-wall" style="--x:33%;--y:80%;--w:67%;--h:1.1%"></div>
+          <button class="pg-secret secret-three" type="button" data-secret-id="final" aria-label="Collect final secret"><span>✦</span></button>
+
+          <div class="pg-finish" data-finish-zone>
+            <span class="finish-ring" aria-hidden="true"></span>
+            <strong data-theme-copy="playground.exit.label">EXIT</strong>
+            <small data-theme-copy="playground.exit.note">Bring the player here.</small>
+          </div>
+
+          <div class="pg-player pg-draggable" data-game-player data-draggable="player" data-start-x="46" data-start-y="3" role="button" tabindex="0" aria-label="Draggable player object"><span class="player-glyph">◆</span></div>
+
+          <div class="completion-card" data-completion-card aria-live="polite">
+            <p class="eyebrow">CHECKPOINT CLEAR</p>
+            <h2>The route keeps going.</h2>
+            <p>Secrets found: <strong data-completion-secrets>0 / 3</strong></p>
+            <div class="hero-actions"><a class="button" href="#spring-shot">Continue ↓</a><button type="button" class="text-button" data-playground-reset>Reset chapter</button></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="playground-expansion" aria-label="Playground chapter two">
+        <div class="section-heading reveal"><div><p class="eyebrow">CHAPTER 02 / SPRING SHOT</p><h2>One more chamber.</h2></div><p>Use the springs, catch the ball, pop the bubble, and open the path.</p></div>
+
+        <article class="pg-chamber pg-hoop-chamber reveal" id="spring-shot" data-hoop-chamber>
+          <div class="pg-chamber-head"><div><span>06 / SPRING SHOT</span><h3>Catch it to open the path</h3></div><button type="button" class="lab-reset" data-hoop-reset>Reset</button></div>
+          <p>Use the independent X and Y springs. Land the ball inside the catch bucket, then pop the familiar bubble.</p>
+          <div class="pg-chamber-stage hoop-stage" data-hoop-stage>
+            <div class="hoop-spring hoop-spring-x"><small>X</small><i></i><button type="button" data-hoop-spring="x">X</button></div>
+            <div class="hoop-spring hoop-spring-y"><small>Y</small><i></i><button type="button" data-hoop-spring="y">Y</button></div>
+            <div class="hoop-ball" data-hoop-ball>●</div>
+            <div class="basket-assembly catch-bucket" data-hoop-target aria-label="Catch bucket"><span class="bucket-shell"></span><span class="bucket-inside"></span><small>LAND HERE</small></div>
+            <button class="pg-secret pg-success-bubble hoop-success-bubble" type="button" data-hoop-success-bubble aria-label="Pop success bubble" hidden><span>✦</span></button>
+            <div class="hoop-score-burst" data-hoop-burst>CAUGHT ✦</div>
+          </div>
+        </article>
+
+        <article class="pg-chamber pg-breaker-chamber reveal" id="brick-breaker" data-pg-breaker>
+          <div class="pg-chamber-head"><div><span>07 / ARCADE</span><h3>Brick Breaker</h3></div><button type="button" class="lab-reset" data-pg-breaker-reset>Reset</button></div>
+          <p>Move the paddle, clear the bricks, and keep the score. Missing the ball costs momentum, not progress.</p>
+          <div class="pg-breaker-hud"><span>SCORE <strong data-pg-breaker-score>0</strong></span><span data-pg-breaker-status>PLAY</span></div>
+          <div class="pg-breaker-stage" data-pg-breaker-stage tabindex="0" aria-label="Brick Breaker game. Move the paddle with pointer, mouse, or arrow keys.">
+            <div class="pg-breaker-bricks" data-pg-breaker-bricks></div>
+            <i class="pg-breaker-paddle" data-pg-breaker-paddle></i>
+            <b class="pg-breaker-ball" data-pg-breaker-ball></b>
+            <strong class="pg-breaker-win" data-pg-breaker-win hidden>FIELD CLEAR ✦</strong>
+          </div>
+        </article>
+
+      </section>
+
+      <div class="container playground-notes">
+        <span>Pointer Events</span><span>AABB Collisions</span><span>Theme State</span><span>Hidden Objects</span><span>No Physics Engine</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p>Theme-aware rooms sharing one lightweight frontend system.</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div></div><div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div></footer>
+  <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
+</body>
+</html>

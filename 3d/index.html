@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A multi-layer interactive depth showcase inside Cody Web Worlds.">
+  <meta name="theme-color" content="#070a10">
+  <title>3D Space | Cody // Web Worlds</title>
+  <script>
+    try {
+      const t = localStorage.getItem('cody-web-worlds-theme');
+      if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t;
+    } catch (_) {}
+  </script>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/3d.css">
+  <script src="../config.js" defer></script>
+  <script src="../script.js" defer></script>
+  <script src="https://unpkg.com/three@0.159.0/build/three.min.js" defer></script>
+  <script src="scene.js" defer></script>
+</head>
+<body class="room-page three-page three-v12-page" data-page="3d">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="Cody Web Worlds home" data-logo-secret><span class="brand-mark" aria-hidden="true">CW</span><span class="brand-copy"><strong>Cody // Web Worlds</strong><small class="cool-only" data-royal-text="ROYAL DEPTH CHAMBER ♛" data-scary-text="HAUNTED DEPTH CHAMBER ☾">DEPTH PLAYGROUND</small><small class="cute-only">TINY DEPTH WORLD ♡</small></span></a>
+      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+        <a href="../index.html" data-room-link="home">Home</a>
+        <a href="../playground/index.html" data-room-link="playground">Playground</a>
+        <a href="../3d/index.html" data-room-link="3d">3D</a>
+        <a href="../lab/index.html" data-room-link="lab">Lab</a>
+        <a href="../room/index.html" data-room-link="room">Room</a>
+        <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="../about/index.html" data-room-link="about">About</a>
+        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      </nav>
+      <div class="theme-switch desktop-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="three-hero three-v10-hero">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="container three-copy reveal">
+        <div>
+          <p class="eyebrow cool-only" data-royal-text="THE EXHIBIT / ROYAL CHAMBER" data-scary-text="THE EXHIBIT / WATCHING CHAMBER">THE EXHIBIT / WEBGL</p>
+          <p class="eyebrow cute-only">THE EXHIBIT / MAGIC ORBIT ♡</p>
+          <h1 data-theme-copy="3d.hero.title">Tune the chamber.</h1>
+        </div>
+        <div class="three-copy-side">
+          <p data-theme-copy="3d.hero.lede">Spin it, reshape it, recolor it, and peel the scene apart.</p>
+          <div class="three-badges"><span>DRAG / ROTATE</span><span>CLICK / INSPECT</span><span class="cool-only" data-royal-text="CUSTOM / GILDED" data-scary-text="CUSTOM / HAUNTED">CUSTOM / LIVE</span><span class="cute-only">CUSTOM / CUTE ♡</span></div>
+        </div>
+      </div>
+
+      <div class="container reveal three-workspace-v15">
+        <div class="three-stage three-exhibit" data-three-stage>
+          <canvas data-three-canvas aria-label="Interactive 3D exhibit"></canvas>
+          <div class="three-stage-noise" aria-hidden="true"></div>
+          <div class="three-v09-haze" aria-hidden="true"></div>
+          <div class="three-cute-decor" aria-hidden="true"><i>♡</i><i>✦</i><i>☆</i><i>♡</i><i>✧</i><i>⋆</i><i>♡</i></div>
+
+          <div class="three-loading" data-three-loading role="status" aria-live="polite">
+            <div class="three-loading-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+            <strong class="cool-only" data-royal-text="OPENING THE CHAMBER…" data-scary-text="OPENING THE VEIL…">INITIALIZING SPACE…</strong><strong class="cute-only">WAKING THE STARS… ♡</strong>
+            <span class="cool-only">locking signal · opening chamber</span><span class="cute-only">polishing heart · counting sparkles</span>
+          </div>
+
+          <div class="three-hud hud-left" aria-hidden="true"><small class="cool-only" data-royal-text="RELIC LOCK" data-scary-text="OMEN LOCK">OBJECT LOCK</small><small class="cute-only">HEART SYNC ♡</small><strong data-hud-lock>LOCKED</strong><span data-hud-coords>+00.0 / +00.0</span></div>
+          <span class="v021-hidden-state" data-hud-speed hidden>NORMAL</span>
+          <strong class="v021-hidden-state" data-scene-name hidden>Signal Core</strong>
+          <div class="scene-selection-status" data-scene-selection><small>SELECTED OBJECT</small><strong data-selected-label>None</strong><button type="button" data-reset-view>Reset view</button></div>
+
+          <div class="three-inspection" data-inspection-panel aria-hidden="true">
+            <button type="button" data-inspection-close aria-label="Exit inspection">×</button>
+            <span class="inspect-note n1"><b class="cool-only">CORE</b><b class="cute-only">HEART ♡</b><small class="cool-only">reactive center</small><small class="cute-only">extremely boopable</small></span>
+            <span class="inspect-note n2"><b class="cool-only">FIELD</b><b class="cute-only">ORBIT ✦</b><small class="cool-only">customizable layers</small><small class="cute-only">tiny things go whee</small></span>
+            <span class="inspect-note n3"><b class="cool-only">STATUS</b><b class="cute-only">VIBE</b><small class="cool-only">user modified</small><small class="cute-only">yours now</small></span>
+          </div>
+
+          <div class="three-instructions"><span>DRAG <b>rotate</b></span><span>MOVE <b>parallax</b></span><span>CLICK CORE <b>inspect</b></span></div>
+          <div class="v021-hidden-state" hidden><small data-scene-kicker>COOL MODE</small><strong data-scene-title>Orbital signal chamber</strong><p data-scene-description>One scene, several layers, all yours to retune.</p></div>
+          <div class="three-fallback" data-three-fallback hidden><strong class="cool-only">SPACE OFFLINE.</strong><strong class="cute-only">The stars refused to wake up. ♡</strong><span>The 3D library could not load, but every other Web World still works.</span></div>
+        </div>
+
+        <div class="scene-customizer reveal" data-scene-customizer>
+          <div class="customizer-heading"><div><span class="cool-only" data-royal-text="ROYAL CUSTOMIZER ♛" data-scary-text="HAUNTED CUSTOMIZER ☾">SCENE CUSTOMIZER</span><span class="cute-only">DRESS THE UNIVERSE ♡</span><small>Every control changes something you can actually see.</small></div><button type="button" class="lab-reset" data-scene-reset>Reset</button></div>
+          <div class="customizer-grid customizer-grid-v11">
+            <fieldset class="customizer-group color-group"><legend>COLOR</legend><div class="scene-swatches" role="group" aria-label="Scene color"><button data-scene-color="0" aria-pressed="true" style="--swatch:#68e8ff"><span>1</span></button><button data-scene-color="1" aria-pressed="false" style="--swatch:#7181ff"><span>2</span></button><button data-scene-color="2" aria-pressed="false" style="--swatch:#a276ff"><span>3</span></button><button data-scene-color="3" aria-pressed="false" style="--swatch:#ff5f7f"><span>4</span></button><button data-scene-color="4" aria-pressed="false" style="--swatch:#55d99a"><span>5</span></button><button data-scene-color="5" aria-pressed="false" style="--swatch:#f5f8ff"><span>6</span></button></div></fieldset><fieldset class="customizer-group material-group"><legend>MATERIAL</legend><div class="scene-materials" role="group" aria-label="Core material"><button data-scene-material="matte" aria-pressed="false">Matte</button><button data-scene-material="gloss" aria-pressed="true">Gloss</button><button data-scene-material="glass" aria-pressed="false">Glass</button><button data-scene-material="wire" aria-pressed="false">Wire</button><button data-scene-material="glow" aria-pressed="false">Glow</button></div></fieldset>
+            <fieldset class="customizer-group object-group"><legend>OBJECTS</legend><div class="scene-toggles"><button data-scene-toggle="inner" aria-pressed="true">Inner orbit</button><button data-scene-toggle="outer" aria-pressed="true">Outer ring</button><button data-scene-toggle="moons" aria-pressed="true">Moons</button><button data-scene-toggle="particles" aria-pressed="true">Particles</button><button data-scene-toggle="accents" aria-pressed="true"><span class="cool-only" data-royal-text="Relics" data-scary-text="Omens">Shards</span><span class="cute-only">Charms</span></button><button data-scene-toggle="background" aria-pressed="true">Background</button><button data-scene-toggle="base" aria-pressed="true">Base ring</button></div></fieldset>
+            <fieldset class="customizer-group speed-group"><legend>SPEED</legend><div class="scene-speeds" role="group" aria-label="Orbit speed"><button data-scene-speed="slow" aria-pressed="false">Slow</button><button data-scene-speed="normal" aria-pressed="true">Normal</button><button data-scene-speed="fast" aria-pressed="false">Fast</button><button data-scene-speed="hyper" aria-pressed="false">Hyper</button></div></fieldset>
+            <fieldset class="customizer-group density-group"><legend>PARTICLES</legend><div class="scene-option-buttons" role="group" aria-label="Particle density"><button data-scene-density="low" aria-pressed="false">Low</button><button data-scene-density="medium" aria-pressed="true">Medium</button><button data-scene-density="high" aria-pressed="false">High</button><button data-scene-density="storm" aria-pressed="false">Storm</button></div></fieldset>
+            <fieldset class="customizer-group range-group"><legend>GLOW / ENERGY</legend><label><input data-scene-glow type="range" min="0" max="100" value="58"><output data-scene-glow-value>58</output></label></fieldset>
+            <fieldset class="customizer-group fog-group"><legend>DEPTH / FOG</legend><div class="scene-option-buttons" role="group" aria-label="Scene depth"><button data-scene-fog="clear" aria-pressed="false">Clear</button><button data-scene-fog="atmospheric" aria-pressed="true">Atmospheric</button><button data-scene-fog="deep" aria-pressed="false">Deep</button></div></fieldset>
+            <fieldset class="customizer-group camera-motion-group"><legend>CAMERA MOTION</legend><div class="scene-option-buttons" role="group" aria-label="Camera motion"><button data-scene-camera="still" aria-pressed="false">Still</button><button data-scene-camera="drift" aria-pressed="true">Drift</button><button data-scene-camera="auto" aria-pressed="false">Auto</button></div></fieldset>
+            <fieldset class="customizer-group range-group"><legend>CAMERA DISTANCE</legend><label><input data-scene-distance type="range" min="55" max="145" value="88"><output data-scene-distance-value>8.8</output></label></fieldset>
+            <fieldset class="customizer-group motion-group"><legend>ORBIT</legend><button class="scene-action-button" type="button" data-scene-orbit-lock aria-pressed="false">Orbit: Live</button></fieldset>
+            <fieldset class="customizer-group shape-group"><legend>CORE SHAPE</legend><button class="scene-action-button scene-shape-cycle" type="button" data-scene-shape-cycle><span data-scene-shape-label>Orb</span><b aria-hidden="true">↻</b></button></fieldset>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>Cody // Web Worlds</strong><p class="cool-only">One deep Three.js world with a ridiculous amount of control.</p><p class="cute-only">One tiny universe, pushed as far as it can go. ♡</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div></div><div class="container footer-bottom"><span>© <span data-year></span> Cody Tucker</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div></footer>
+  <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive frontend mechanics lab for Web Worlds.">
+  <meta name="theme-color" content="#070a10">
+  <title>Lab | Web Worlds</title>
+  <script>
+    try {
+      const t = localStorage.getItem('cody-web-worlds-theme');
+      if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t;
+    } catch (_) {}
+  </script>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/lab.css">
+  <script src="../config.js" defer></script>
+  <script src="../script.js" defer></script>
+  <script src="lab.js" defer></script>
+</head>
+
+<body class="room-page lab-page" data-page="lab">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="Web Worlds home" data-logo-secret>
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        <span class="brand-copy"><strong>Web Worlds</strong><small>INTERACTIVE FRONTEND SHOWCASE</small></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+        <a href="../index.html" data-room-link="home">Home</a>
+        <a href="../playground/index.html" data-room-link="playground">Playground</a>
+        <a href="../3d/index.html" data-room-link="3d">3D</a>
+        <a href="../lab/index.html" data-room-link="lab">Lab</a>
+        <a href="../room/index.html" data-room-link="room">Room</a>
+        <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="../about/index.html" data-room-link="about">About</a>
+        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      </nav>
+
+      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+        <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
+        <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
+        <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
+      </div>
+
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lab-hero">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="container lab-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-theme-copy="lab.hero.eyebrow">LAB / MECHANICS WORKSHOP</p>
+          <h1 data-theme-copy="lab.hero.title">Take the toys apart before putting them in the game.</h1>
+          <p class="lede" data-theme-copy="lab.hero.lede">These benches isolate the browser systems used elsewhere in Web Worlds. Lab explains the pieces. Playground turns them into problems.</p>
+          <div class="hero-actions">
+            <a class="button" href="#movement" data-theme-copy="lab.hero.primary">Open the benches</a>
+            <a class="text-button" href="../playground/index.html" data-theme-copy="lab.hero.secondary">Try the combined version →</a>
+          </div>
+        </div>
+
+        <div class="lab-rack reveal" aria-hidden="true">
+          <div class="lab-rack-grid"></div>
+          <span class="rack-node n1">DRAG</span>
+          <span class="rack-node n2">STATE</span>
+          <span class="rack-node n3">LIGHT</span>
+          <span class="rack-node n4">HITBOX</span>
+          <span class="rack-line l1"></span>
+          <span class="rack-line l2"></span>
+          <span class="rack-core">⌁</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container lab-jumpbar reveal" aria-label="Lab section shortcuts">
+      <span data-theme-copy="lab.index">BENCH INDEX</span>
+      <a href="#movement">Movement</a>
+      <a href="#collision">Collision</a>
+      <a href="#environment">Environment</a>
+      <a href="#systems">World Systems</a>
+      <a href="#forces">Forces</a>
+      <a href="#depth">Depth</a>
+      <a href="#future">Queued</a>
+    </div>
+
+    <section class="section lab-section" id="movement">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">MOVEMENT</p><h2>Drag it. Measure it. Break it.</h2></div>
+          <p>Small test chambers make behavior visible before it becomes part of a larger puzzle.</p>
+        </div>
+
+        <div class="lab-grid two-col">
+          <article class="lab-module reveal" data-lab-module="drag">
+            <div class="lab-module-head">
+              <div><span>01 / DRAGGING</span><h3>Basic pointer movement</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Grab the object. Position, pointer state, and boundaries update live.</p>
+            <div class="lab-diagnostics" aria-live="polite">
+              <span>X <b data-drag-x>50</b></span><span>Y <b data-drag-y>50</b></span><span>STATE <b data-drag-state>idle</b></span>
+            </div>
+            <div class="lab-stage drag-stage" data-lab-stage="drag">
+              <div class="lab-gridlines" aria-hidden="true"></div>
+              <div class="lab-entity orb" data-lab-entity data-start-x="44" data-start-y="40" tabindex="0" role="button" aria-label="Draggable test object">DRAG</div>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="pointer">
+            <div class="lab-module-head">
+              <div><span>02 / POINTER</span><h3>Input response</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Move, tilt, click, and watch a single component react without a framework.</p>
+            <div class="lab-diagnostics"><span>X <b data-pointer-x>0</b></span><span>Y <b data-pointer-y>0</b></span><span>CLICKS <b data-pointer-clicks>0</b></span></div>
+            <div class="lab-stage pointer-stage" data-pointer-stage>
+              <div class="pointer-test-card" data-pointer-card>
+                <span>INPUT</span>
+                <strong>Move around me.</strong>
+                <small>Click for a pulse.</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="collision">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">COLLISION</p><h2>Walls should feel real.</h2></div>
+          <p>The same lightweight AABB-style ideas used by Playground are easier to inspect here.</p>
+        </div>
+
+        <div class="lab-grid two-col">
+          <article class="lab-module lab-module-wide reveal" data-lab-module="collision">
+            <div class="lab-module-head">
+              <div><span>03 / COLLISION</span><h3>Collision + corridor test</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Drag through the corner, then weave through the narrow corridor.</p>
+            <div class="lab-diagnostics"><span>PLAYER <b>44px</b></span><span>GAP <b>78px</b></span><span>TOLERANCE <b>0px</b></span></div>
+            <div class="lab-stage collision-stage collision-combined-stage" data-lab-stage="collision">
+              <div class="lab-gridlines" aria-hidden="true"></div>
+              <i class="lab-wall" data-lab-wall style="--x:16%;--y:14%;--w:3.5%;--h:50%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:16%;--y:60%;--w:28%;--h:4.5%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:40%;--y:34%;--w:3.5%;--h:30%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:30%;--y:34%;--w:13.5%;--h:4.5%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:50%;--y:20%;--w:38%;--h:4.5%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:62%;--y:43%;--w:38%;--h:4.5%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:50%;--y:66%;--w:38%;--h:4.5%"></i>
+              <div class="lab-entity player mini" data-lab-entity data-collide data-start-x="5" data-start-y="9" tabindex="0" role="button" aria-label="Collision and corridor test player">◆</div>
+              <span class="maze-target collision-target">END</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="environment">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">WORLD INTERACTION</p><h2>Move the world, not just the player.</h2></div>
+          <p>These are intentionally transparent versions of mechanics that can become much harder inside Playground.</p>
+        </div>
+
+        <div class="lab-grid two-col">
+          <article class="lab-module reveal" data-lab-module="obstacle">
+            <div class="lab-module-head">
+              <div><span>05 / OBSTACLE</span><h3>Move it. Get through.</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>One block. One opening. One goal.</p>
+            <div class="lab-diagnostics"><span>ROUTE <b data-obstacle-status>BLOCKED</b></span></div>
+            <div class="lab-stage obstacle-stage obstacle-simple-stage" data-lab-stage="obstacle">
+              <div class="obstacle-start-label">START</div>
+              <i class="lab-wall" data-lab-wall style="--x:0%;--y:52%;--w:calc(50% - 38px);--h:6%"></i>
+              <i class="lab-wall" data-lab-wall style="--x:calc(50% + 38px);--y:52%;--w:calc(50% - 38px);--h:6%"></i>
+
+              <div class="lab-goal obstacle-goal" data-obstacle-goal>
+                <span>END</span><small>reach me</small>
+              </div>
+
+              <div class="lab-entity block obstacle-block" data-lab-entity data-collide data-start-x="center" data-start-y="43.4" tabindex="0" role="button" aria-label="Movable obstacle">MOVE</div>
+              <div class="lab-entity player mini obstacle-player" data-lab-entity data-collide data-start-x="center" data-start-y="14" tabindex="0" role="button" aria-label="Obstacle test player">◆</div>
+
+              <div class="module-success" data-obstacle-success aria-live="polite">ROUTE CLEAR</div>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="collectible">
+            <div class="lab-module-head">
+              <div><span>06 / HIDDEN OBJECT</span><h3>Reveal + collect</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <div class="lab-diagnostics"><span>FOUND <b data-lab-secret-count>0 / 1</b></span></div>
+            <div class="lab-stage collectible-stage" data-lab-stage="collectible">
+              <button class="lab-secret" type="button" data-lab-secret aria-label="Collect hidden test secret">✦</button>
+              <div class="lab-entity cover" data-lab-entity data-start-x="39" data-start-y="32" tabindex="0" role="button" aria-label="Move cover to reveal secret">LIFT</div>
+              <div class="collectible-note">Something is under the cover.</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="lab-grid two-col lab-grid-followup">
+          <article class="lab-module reveal" data-lab-module="pressure">
+            <div class="lab-module-head">
+              <div><span>09 / PRESSURE PLATE</span><h3>Hold the door open</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Leave the block on the plate. The doorway is the only way across.</p>
+            <div class="lab-diagnostics"><span>PLATE <b data-plate-state>OFF</b></span><span>DOOR <b data-door-state>CLOSED</b></span></div>
+
+            <div class="lab-stage pressure-stage pressure-maze-stage" data-lab-stage="pressure">
+              <div class="pressure-side-label left">START SIDE</div>
+              <div class="pressure-side-label right">EXIT SIDE</div>
+
+              <!-- Full-height divider. The only opening is the middle doorway. -->
+              <i class="lab-wall pressure-divider" data-lab-wall style="--x:59%;--y:0%;--w:4%;--h:36%"></i>
+              <i class="lab-wall pressure-divider" data-lab-wall style="--x:59%;--y:64%;--w:4%;--h:36%"></i>
+              <i class="lab-wall pressure-door" data-pressure-door data-lab-wall style="--x:59%;--y:36%;--w:4%;--h:28%"></i>
+
+              <div class="pressure-plate" data-pressure-plate><span>PLATE</span></div>
+              <div class="lab-goal pressure-exit" data-pressure-exit><span>EXIT</span><small>cross the gate</small></div>
+
+              <div class="lab-entity compact-block pressure-block" data-lab-entity data-collide data-start-x="13" data-start-y="19" tabindex="0" role="button" aria-label="Pressure plate block">BLOCK</div>
+              <div class="lab-entity player mini pressure-player" data-lab-entity data-collide data-start-x="39" data-start-y="24" tabindex="0" role="button" aria-label="Pressure plate player">◆</div>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="surface">
+            <div class="lab-module-head">
+              <div><span>10 / SURFACES</span><h3>Throw it across the floor</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Grab the puck, flick it, then feel each surface change the motion.</p>
+
+            <div class="lab-diagnostics">
+              <span>SURFACE <b data-surface-status>NORMAL</b></span>
+              <span>SPEED <b data-surface-speed>0</b></span>
+            </div>
+
+            <div class="surface-play-stage" data-surface-stage>
+              <div class="surface-zone normal" data-surface-zone="normal"><span>NORMAL</span></div>
+              <div class="surface-zone ice" data-surface-zone="ice"><span>ICE</span><small>slippery</small></div>
+              <div class="surface-zone sticky" data-surface-zone="sticky"><span>STICKY</span><small>heavy drag</small></div>
+              <div class="surface-zone conveyor" data-surface-zone="conveyor"><span>CONVEYOR</span><small>→ → →</small></div>
+
+              <div class="surface-puck" data-surface-puck role="button" tabindex="0" aria-label="Draggable surface test puck">●</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="systems">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">WORLD STATE</p><h2>One structure. Different information.</h2></div>
+          <p>Theme state can alter meaning while every other part of the module stays put.</p>
+        </div>
+
+        <div class="lab-grid two-col">
+          <article class="lab-module reveal theme-state-module" data-lab-module="theme">
+            <div class="lab-module-head">
+              <div><span>07 / THEME STATE</span><h3>Split clue</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <div class="theme-state-display">
+              <div class="lab-theme-clue cool-only"><span>SIGNAL DIGIT</span><strong>4</strong></div>
+              <div class="lab-theme-clue cute-only"><span>CHARM DIGIT</span><strong>7</strong></div>
+              <div class="lab-theme-clue royal-only"><span>SEAL DIGIT</span><strong>2</strong></div>
+              <div class="lab-theme-clue scary-only"><span>OMEN DIGIT</span><strong>9</strong></div>
+              <label for="lab-code">Four digits · Cool → Cute → Royal → Scary</label>
+              <div class="lab-code-row"><input id="lab-code" maxlength="4" inputmode="numeric" data-lab-code><button class="button small" type="button" data-lab-code-check>Check</button></div>
+              <p data-lab-code-status>Inspect every world. Combine the four clues.</p>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="lighting">
+            <div class="lab-module-head">
+              <div><span>08 / LIGHT</span><h3>Reveal by illumination</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Drag the light through the chamber. The darkness is just a lightweight CSS mask.</p>
+            <div class="lab-stage lighting-stage" data-light-stage>
+              <span class="light-secret s1" data-light-copy data-cool="PATH" data-cute="HEART" data-royal="CROWN" data-scary="OMEN">PATH</span><span class="light-secret s2" data-light-copy data-cool="SIGNAL" data-cute="WISH" data-royal="OATH" data-scary="VEIL">SIGNAL</span><span class="light-secret s3" data-light-copy data-cool="FOUND" data-cute="CHARM" data-royal="SEAL" data-scary="WHISPER">FOUND</span>
+              <div class="lab-light" data-light-handle tabindex="0" role="button" aria-label="Movable light"><span data-light-symbol>✦</span></div>
+              <div class="light-mask" data-light-mask aria-hidden="true"></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="lab-grid two-col lab-grid-followup">
+          <article class="lab-module reveal" data-lab-module="magnet">
+            <div class="lab-module-head">
+              <div><span>11 / FORCE FIELD</span><h3>Build a magnetic mess</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p><span class="desktop-magnet-copy">Drag the magnets. Give each one a mode. Throw the metal into the combined field.</span><span class="mobile-magnet-copy">One magnet, one puck. Pull it in, push it away, or turn the field off.</span></p>
+
+            <div class="magnet-bank" aria-label="Magnet controls">
+              <div class="magnet-control-group" data-magnet-controls="a">
+                <span>A</span>
+                <button type="button" data-magnet-mode="attract">Attract</button>
+                <button type="button" data-magnet-mode="repel">Repel</button>
+                <button type="button" data-magnet-mode="off">Off</button>
+              </div>
+              <div class="magnet-control-group" data-magnet-controls="b">
+                <span>B</span>
+                <button type="button" data-magnet-mode="attract">Attract</button>
+                <button type="button" data-magnet-mode="repel">Repel</button>
+                <button type="button" data-magnet-mode="off">Off</button>
+              </div>
+              <div class="magnet-control-group" data-magnet-controls="c">
+                <span>C</span>
+                <button type="button" data-magnet-mode="attract">Attract</button>
+                <button type="button" data-magnet-mode="repel">Repel</button>
+                <button type="button" data-magnet-mode="off">Off</button>
+              </div>
+            </div>
+
+            <div class="lab-stage magnet-stage multi-magnet-stage" data-magnet-stage>
+              <div class="magnet-node magnet-a" data-magnet-id="a" data-start-x="14" data-start-y="23" data-mode="attract" role="button" tabindex="0" aria-label="Draggable magnet A">
+                <span>A</span><small>ATTRACT</small>
+              </div>
+              <div class="magnet-node magnet-b" data-magnet-id="b" data-start-x="65" data-start-y="17" data-mode="repel" role="button" tabindex="0" aria-label="Draggable magnet B">
+                <span>B</span><small>REPEL</small>
+              </div>
+              <div class="magnet-node magnet-c" data-magnet-id="c" data-start-x="50" data-start-y="68" data-mode="off" role="button" tabindex="0" aria-label="Draggable magnet C">
+                <span>C</span><small>OFF</small>
+              </div>
+
+              <div class="multi-metal-orb" data-metal-orb data-start-x="45" data-start-y="39" role="button" tabindex="0" aria-label="Draggable magnetic test object">●</div>
+              <div class="magnet-field-caption"><span class="desktop-magnet-copy">combined field</span><span class="mobile-magnet-copy">single field</span></div>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="teleporter">
+            <div class="lab-module-head">
+              <div><span>12 / TELEPORTER</span><h3>Enter here. Leave there.</h3></div>
+              <button class="lab-reset" type="button" data-module-reset>Reset</button>
+            </div>
+            <p>Drop the object into either portal. A short cooldown prevents instant ping-pong loops.</p>
+            <div class="lab-stage teleport-stage" data-lab-stage="teleporter">
+              <div class="portal portal-a" data-portal="a"><span>A</span></div>
+              <div class="portal portal-b" data-portal="b"><span>B</span></div>
+              <div class="lab-entity teleport-object" data-lab-entity data-start-x="43" data-start-y="41" tabindex="0" role="button" aria-label="Teleportable object">◆</div>
+              <div class="teleport-status" data-teleport-status>Drop into a portal.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="forces">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">FORCES + CONNECTIONS</p><h2>More toys for future puzzles.</h2></div><p>Push it, launch it, rotate it, or control it from somewhere else.</p></div>
+        <div class="lab-grid two-col">
+          <article class="lab-module lab-module-wide reveal" data-lab-module="wind-spring">
+            <div class="lab-module-head"><div><span>13 / WIND + SPRING</span><h3>Push it. Kick it.</h3></div><button class="lab-reset" type="button" data-force-reset>Reset</button></div>
+            <p>Wind and both springs act on the same ball in the same room.</p>
+            <div class="force-combo-toolbar">
+              <div class="lab-mini-controls" role="group" aria-label="Wind direction"><button data-wind-mode="left">← Left</button><button data-wind-mode="off" aria-pressed="true">Off</button><button data-wind-mode="right">Right →</button></div>
+              <div class="lab-diagnostics spring-diagnostics"><span>X IMPULSE <b data-spring-x>0</b></span><span>Y IMPULSE <b data-spring-y>0</b></span><span>SPEED <b data-spring-speed>0</b></span></div>
+            </div>
+            <div class="force-stage spring-stage-v12 wind-spring-stage" data-wind-spring-stage data-wind="off">
+              <div class="wind-field" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="spring-axis spring-axis-x" aria-label="Horizontal spring controller"><span class="spring-axis-label">X</span><i class="spring-coil" aria-hidden="true"></i><button class="spring-axis-handle" type="button" data-spring-handle="x" aria-label="Horizontal spring. Pull left or right.">X</button></div>
+              <div class="spring-axis spring-axis-y" aria-label="Vertical spring controller"><span class="spring-axis-label">Y</span><i class="spring-coil" aria-hidden="true"></i><button class="spring-axis-handle" type="button" data-spring-handle="y" aria-label="Vertical spring. Pull up or down.">Y</button></div>
+              <div class="spring-projectile spring-projectile-v12" data-force-ball role="button" tabindex="0" aria-label="Shared wind and spring test ball">●</div>
+            </div>
+          </article>
+
+          <article class="lab-module lab-module-wide reveal" data-lab-module="bridge">
+            <div class="lab-module-head"><div><span>15 / ROTATION</span><h3>Turn the bridge</h3></div><button class="lab-reset" type="button" data-bridge-reset>Reset</button></div>
+            <p>Turn the crossing into one continuous route. Wide screens use two bridges in sequence; mobile keeps one.</p>
+            <div class="lab-diagnostics"><span>ANGLE <b data-bridge-angle>A −35° · B 35°</b></span><span>PATH <b data-bridge-state>BLOCKED</b></span></div>
+            <div class="force-stage bridge-stage bridge-stage-v22" data-bridge-stage>
+              <div class="bridge-bank bridge-start">START</div>
+              <div class="bridge-bank bridge-middle" aria-hidden="true">MID</div>
+              <div class="bridge-bank bridge-goal">GOAL</div>
+              <div class="bridge-gap-label bridge-label-a" aria-hidden="true">BRIDGE A</div>
+              <div class="bridge-gap-label bridge-label-b" aria-hidden="true">BRIDGE B</div>
+              <div class="rotating-bridge bridge-a" data-bridge="a" data-start-angle="-35"><span class="bridge-handle" data-bridge-handle></span></div>
+              <div class="rotating-bridge bridge-b" data-bridge="b" data-start-angle="35"><span class="bridge-handle" data-bridge-handle></span></div>
+              <div class="bridge-cargo bridge-cargo-v22" data-bridge-cargo role="button" tabindex="0" aria-label="Bridge course player">◆</div>
+            </div>
+          </article>
+
+          <article class="lab-module lab-module-wide reveal" data-lab-module="linked">
+            <div class="lab-module-head"><div><span>16 / LINKED STATE</span><h3>Control it from here</h3></div><button class="lab-reset" type="button" data-linked-reset>Reset</button></div>
+            <p>Move the remote paddle, break the bricks, and keep the linked-state idea visible.</p>
+            <div class="linked-stage linked-stage-v11" data-linked-stage>
+              <div class="linked-control">
+                <span class="linked-panel-kicker">REMOTE POSITION</span>
+                <div class="linked-slider-row"><small>0</small><input id="remote-link" data-linked-input type="range" min="0" max="100" value="20" aria-label="Remote platform position"><small>100</small></div>
+                <div class="linked-readout"><span>POSITION</span><strong data-linked-value>20%</strong></div>
+              </div>
+              <div class="linked-remote">
+                <span class="linked-panel-kicker">REMOTE PLATFORM</span>
+                <div class="linked-pong-room linked-breaker-room" data-linked-room tabindex="0" aria-label="Remote Brick Breaker. Use the slider or arrow keys to move the paddle."><div class="linked-bricks" data-linked-bricks></div><i data-linked-platform></i><b data-linked-ball aria-hidden="true"></b></div>
+                <div class="linked-readout"><span>LINK</span><strong data-linked-status>ACTIVE</strong></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section lab-section lab-v13-new" id="field-lab">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">NEW FORCE TESTS</p><h2>Bend the path. Swing the weight.</h2></div><p>Two more lightweight mechanics, kept clean here before Playground gets ideas.</p></div>
+        <div class="lab-grid two-col">
+          <article class="lab-module reveal" data-lab-module="gravity-well">
+            <div class="lab-module-head"><div><span>17 / GRAVITY WELL</span><h3>Curve the trajectory</h3></div><button class="lab-reset" type="button" data-gravity-reset>Reset</button></div>
+            <p>Drag the well, throw the orb, and watch the path bend around the field.</p>
+            <div class="lab-mini-controls gravity-controls" role="group" aria-label="Gravity well controls">
+              <button type="button" data-gravity-mode="attract" aria-pressed="true">Attract</button>
+              <button type="button" data-gravity-mode="repel" aria-pressed="false">Repel</button>
+              <label>Strength <input data-gravity-strength type="range" min="0" max="100" value="58"></label>
+            </div>
+            <div class="force-stage gravity-stage" data-gravity-stage>
+              <div class="gravity-grid" aria-hidden="true"></div>
+              <div class="gravity-well" data-gravity-well role="button" tabindex="0" aria-label="Draggable gravity source"><span>◎</span><small>FIELD</small></div>
+              <div class="gravity-orb" data-gravity-orb role="button" tabindex="0" aria-label="Draggable gravity test orb">●</div>
+              <div class="gravity-vector" data-gravity-vector aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="lab-module reveal" data-lab-module="pendulum">
+            <div class="lab-module-head"><div><span>18 / PENDULUM</span><h3>Give gravity a string</h3></div><button class="lab-reset" type="button" data-pendulum-reset>Reset</button></div>
+            <p>Grab any weight from any direction. Move the anchor while the physics keeps running, or switch into double chaos.</p>
+            <div class="lab-mini-controls pendulum-controls">
+              <div class="pendulum-toggle-group" role="group" aria-label="Pendulum system"><span>System</span><button type="button" data-pendulum-system="single" aria-pressed="true">Single</button><button type="button" data-pendulum-system="double" aria-pressed="false">Double</button></div>
+              <div class="pendulum-toggle-group" role="group" aria-label="Constraint type"><span>Constraint</span><button type="button" data-pendulum-constraint="taut" aria-pressed="true">Taut</button><button type="button" data-pendulum-constraint="rope" aria-pressed="false">Rope</button></div>
+              <label>Length <input data-pendulum-length type="range" min="75" max="130" value="105"><output data-pendulum-length-value>105</output></label>
+              <label>Size <input data-pendulum-zoom type="range" min="35" max="70" value="50"><output data-pendulum-zoom-value>50%</output></label>
+            </div>
+            <div class="force-stage pendulum-stage pendulum-stage-v15" data-pendulum-stage data-system="single" data-constraint="taut">
+              <button class="pendulum-anchor" type="button" data-pendulum-anchor aria-label="Draggable pendulum anchor">●</button>
+              <svg class="pendulum-line pendulum-rope-svg" aria-hidden="true"><path data-pendulum-rope-a></path><path data-pendulum-rope-b></path></svg>
+              <div class="pendulum-bob" data-pendulum-bob="1" role="button" tabindex="0" aria-label="First pendulum weight">◆</div>
+              <div class="pendulum-bob pendulum-bob-two" data-pendulum-bob="2" role="button" tabindex="0" aria-label="Second pendulum weight">●</div>
+              
+              <span class="pendulum-floor" aria-hidden="true">LIVE CONSTRAINT FIELD</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section artifact-shelf-section" id="depth">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow cool-only" data-royal-text="19 / GILDED DEPTH" data-scary-text="19 / CURSED DEPTH">19 / CSS DEPTH</p><p class="eyebrow cute-only">19 / CSS DEPTH ♡</p><h2 class="cool-only">Pick up an artifact.</h2><h2 class="cute-only">Pick up an artifact.</h2></div><p class="cool-only" data-royal-text="One royal pass suspended in gilded browser depth." data-scary-text="One omen card floating where the browser should not bend.">One smooth field card built from layered DOM, perspective, and rotation.</p><p class="cute-only">One tiny impossible pass made from ordinary browser layers. ♡</p></div>
+        <div class="artifact-shelf artifact-shelf-v11 artifact-shelf-single" data-css3d-shelf>
+<button class="css3d-artifact artifact-card artifact-card-v14" data-css3d-artifact data-impossible-card aria-label="Flip the impossible field card">
+            <span class="artifact-3d flat-card field-plate impossible-card"><i class="card-face"><b data-card-copy></b></i></span>
+            <small class="cool-only" data-royal-text="COURT PASS" data-scary-text="OMEN CARD">FIELD CARD</small><small class="cute-only">MAGIC PASS</small>
+          </button>
+</div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="future">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">QUEUED EXPERIMENTS</p><h2>The shelves are not empty for long.</h2></div>
+          <p>These are the next mechanics worth proving here before they graduate into bigger experiences.</p>
+        </div>
+
+        <div class="queued-grid">
+          <article class="queued-card reveal"><span>STACKING</span><h3>Weight + towers</h3><p>Stable piles, toppling, different body mass.</p><small>Queued for Lab</small></article>
+          <article class="queued-card reveal"><span>STACKING</span><h3>Interlocking pieces</h3><p>Shape fit, narrow clearances, layered geometry.</p><small>Queued for Lab</small></article>
+          <article class="queued-card reveal"><span>MOVEMENT</span><h3>Platforms + lifts</h3><p>Moving surfaces, elevators, carried objects.</p><small>Queued for Lab</small></article>
+          <article class="queued-card reveal"><span>GAME STATE</span><h3>Hazards + checkpoints</h3><p>Respawns, timers, score, saved progression.</p><small>Queued for Lab</small></article>
+          <article class="queued-card reveal"><span>INVENTORY</span><h3>Carry + use</h3><p>Pickups, keys, held state, context-sensitive actions.</p><small>Queued for Lab</small></article>
+          <article class="queued-card reveal"><span>PROCEDURAL</span><h3>Generated spaces</h3><p>Seeded mazes, wandering agents, random rooms.</p><small>Queued for Lab</small></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><strong>Web Worlds</strong><p>Theme-aware rooms sharing one lightweight frontend system.</p></div>
+      <div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div>
+    </div>
+    <div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div>
+  </footer>
+
+  <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
+</body>
+</html>

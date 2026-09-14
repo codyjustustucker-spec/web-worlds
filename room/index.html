@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A living theme-reactive physics world inside Web Worlds.">
+  <meta name="theme-color" content="#070a10">
+  <title>Room | Web Worlds</title>
+  <script>
+    try {
+      const t = localStorage.getItem('cody-web-worlds-theme');
+      if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t;
+    } catch (_) {}
+  </script>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/room.css">
+  <script src="../config.js" defer></script>
+  <script src="../script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js" defer></script>
+  <script src="room.js" defer></script>
+</head>
+<body class="room-page physics-room-page living-room-v12" data-page="room">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="Web Worlds home" data-logo-secret>
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        <span class="brand-copy"><strong>Web Worlds</strong><small class="cool-only" data-royal-text="ROYAL MENAGERIE ♛" data-scary-text="NIGHT MENAGERIE ☾">LIVING PREHISTORIC WORLD</small><small class="cute-only">LITTLE GARDEN WORLD ♡</small></span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+        <a href="../index.html" data-room-link="home">Home</a>
+        <a href="../playground/index.html" data-room-link="playground">Playground</a>
+        <a href="../3d/index.html" data-room-link="3d">3D</a>
+        <a href="../lab/index.html" data-room-link="lab">Lab</a>
+        <a href="../room/index.html" data-room-link="room">Room</a>
+        <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="../about/index.html" data-room-link="about">About</a>
+        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      </nav>
+      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+        <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
+        <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
+        <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
+      </div>
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="physics-room-hero room-v09-hero">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="container physics-room-copy reveal">
+        <div>
+          <p class="eyebrow cool-only" data-royal-text="ROOM / ROYAL MENAGERIE" data-scary-text="ROOM / HAUNTED MENAGERIE">ROOM / ANCIENT TERRARIUM</p>
+          <p class="eyebrow cute-only">ROOM / TINY GARDEN ♡</p>
+          <h1 data-theme-copy="room.hero.title">A tiny world that refuses to stay still.</h1>
+        </div>
+        <div>
+          <p class="lede" data-theme-copy="room.hero.lede">Drop objects into the habitat, feed the locals, and see what the simulation does with them.</p>
+          <div class="room-mode-description"><span class="cool-only" data-royal-text="ROYAL MENAGERIE · EDITABLE COURT" data-scary-text="HAUNTED MENAGERIE · EDITABLE HAUNT">PREHISTORIC WORLD · EDITABLE POPULATION</span><span class="cute-only">GARDEN WORLD ♡ BUILD YOUR LITTLE FLOCK</span></div>
+        </div>
+      </div>
+
+      <div class="container reveal">
+        <div class="physics-toolbar">
+          <div class="physics-status"><i></i><span data-room-status>Waking world…</span></div>
+          <div class="physics-controls">
+            <label>Gravity <input type="range" min="0.25" max="1.65" step="0.05" value="1" data-gravity-control></label>
+            
+            <button type="button" class="lab-reset" data-pause-world>Pause</button>
+            <button type="button" class="button small" data-reset-world>Reset world</button>
+          </div>
+        </div>
+
+        <div class="room-dropbar" aria-label="Choose what clicking the world drops">
+          <span class="room-dropbar-label"><b class="cool-only" data-royal-text="ROYAL PROVISIONS" data-scary-text="CURSED OFFERINGS">DROP TOOL</b><b class="cute-only">DROP SOMETHING ♡</b></span>
+          <div class="room-drop-tools" role="group" aria-label="Drop item">
+            <button type="button" data-drop-tool="food-plant" aria-pressed="true"><span>❧</span><b class="cool-only" data-royal-text="Royal grapes" data-scary-text="Cursed berry">Plant pod</b><b class="cute-only">Garden greens</b></button>
+            <button type="button" data-drop-tool="food-meat" aria-pressed="false"><span>◆</span><b class="cool-only" data-royal-text="Roast cut" data-scary-text="Bone morsel">Raw meat</b><b class="cute-only">Meat bite</b></button>
+            <button type="button" data-drop-tool="food-omnivore" aria-pressed="false"><span>✦</span><b class="cool-only" data-royal-text="Court feast" data-scary-text="Haunted tart">Prepared ration</b><b class="cute-only">Fancy feast</b></button>
+            <button type="button" data-drop-tool="ball" aria-pressed="false"><span>○</span>Ball</button>
+            <button type="button" data-drop-tool="block" aria-pressed="false"><span>□</span>Block</button>
+            <button type="button" data-drop-tool="rock" aria-pressed="false"><span>◇</span>Rock</button>
+            <button type="button" data-drop-tool="bouncy" aria-pressed="false"><span>◎</span>Bouncy</button>
+          </div>
+          <div class="room-drop-actions">
+            <div class="room-activity" role="group" aria-label="Creature activity">
+              <button type="button" data-room-activity="calm" aria-pressed="false">Calm</button>
+              <button type="button" data-room-activity="normal" aria-pressed="true">Normal</button>
+              <button type="button" data-room-activity="busy" aria-pressed="false">Busy</button>
+            </div>
+            <button type="button" class="lab-reset" data-clear-drops>Clear drops</button>
+          </div>
+        </div>
+
+        <div class="room-population-panel" aria-label="Animal population controls">
+          <div class="population-heading"><span class="cool-only" data-royal-text="COURT CREATURES ♛" data-scary-text="NIGHT CREATURES ☾">POPULATION</span><span class="cute-only">TINY FRIENDS ♡</span><small>Any mix is allowed. Zero is allowed too.</small></div>
+          <div class="population-controls">
+            <div class="population-species" data-population-species="a"><span class="cool-only" data-royal-text="Attendant" data-scary-text="Little Ghost">Herbivore</span><span class="cute-only">Bunny</span><button type="button" data-population-action="minus" aria-label="Remove one species A">−</button><strong data-population-count="a">1</strong><button type="button" data-population-action="plus" aria-label="Add one species A">+</button></div>
+            <div class="population-species" data-population-species="b"><span class="cool-only" data-royal-text="Royal" data-scary-text="Vampire">Raptor</span><span class="cute-only">Kitty</span><button type="button" data-population-action="minus" aria-label="Remove one species B">−</button><strong data-population-count="b">1</strong><button type="button" data-population-action="plus" aria-label="Add one species B">+</button></div>
+            <div class="population-species" data-population-species="c"><span class="cool-only" data-royal-text="Eagle" data-scary-text="Bat">Flyer</span><span class="cute-only">Bird</span><button type="button" data-population-action="minus" aria-label="Remove one flyer">−</button><strong data-population-count="c">1</strong><button type="button" data-population-action="plus" aria-label="Add one flyer">+</button></div>
+          </div>
+        </div>
+
+        <div class="physics-world room-world-v12 room-world-v13" data-physics-world aria-label="Interactive living physics world">
+          <div class="room-loading" data-room-loading role="status" aria-live="polite">
+            <div class="room-loading-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+            <strong class="cool-only" data-royal-text="OPENING THE ROYAL GROUNDS…" data-scary-text="OPENING THE VEIL…">INITIALIZING WORLD…</strong>
+            <strong class="cute-only">WAKING THE LITTLE WORLD… ♡</strong>
+            <span class="cool-only" data-royal-text="polishing gold · waking the court · checking gravity" data-scary-text="lighting candles · waking shadows · checking gravity">tracking weather · waking creatures · checking gravity</span>
+            <span class="cute-only">fluffing clouds · waking friends · growing flowers</span>
+          </div>
+
+          <div class="room-backdrop" aria-hidden="true">
+            <span class="v09-sky-orb"></span>
+            <span class="v09-mountain m1"></span><span class="v09-mountain m2"></span><span class="v09-mountain m3"></span>
+            <span class="v09-hill h1"></span><span class="v09-hill h2"></span>
+            <span class="v09-cloud cloud-a"></span><span class="v09-cloud cloud-b"></span><span class="v09-cloud cloud-c"></span>
+            <span class="v09-distant-tree t1"></span><span class="v09-distant-tree t2"></span><span class="v09-distant-tree t3"></span>
+          </div>
+
+          <div class="room-midground" aria-hidden="true">
+            <span class="v09-fern fern-a"></span><span class="v09-fern fern-b"></span><span class="v09-fern fern-c"></span>
+            <span class="v09-bush bush-a"></span><span class="v09-bush bush-b"></span><span class="v09-bush bush-c"></span>
+            <span class="v09-flower flower-a"></span><span class="v09-flower flower-b"></span><span class="v09-flower flower-c"></span><span class="v09-flower flower-d"></span>
+            <span class="v09-mushroom mush-a"></span><span class="v09-mushroom mush-b"></span>
+            <span class="v09-pond"></span>
+            <span class="v09-fossil fossil-a">◌</span><span class="v09-fossil fossil-b">◇</span>
+          </div>
+
+          <div class="room-habitats" aria-hidden="true">
+            <span class="habitat habitat-nest habitat-anchor" data-habitat="nest"></span>
+            <span class="habitat habitat-patch" data-habitat="patch"><i></i><small class="cool-only">ACTIVITY NODE</small><small class="cute-only">flower patch</small></span>
+          </div>
+
+          <div class="room-theme-dressing" aria-hidden="true">
+            <span class="cool-only cool-marker cm1"></span><span class="cool-only cool-marker cm2"></span><span class="cool-only cool-crystal cc1"></span><span class="cool-only cool-crystal cc2"></span>
+            <span class="royal-only royal-arch ra1"></span><span class="royal-only royal-arch ra2"></span><span class="royal-only royal-banner rb1"></span><span class="royal-only royal-banner rb2"></span><span class="royal-only royal-shrub rs1"></span><span class="royal-only royal-shrub rs2"></span>
+            <span class="scary-only scary-post sp1"></span><span class="scary-only scary-post sp2"></span><span class="scary-only scary-eye se1"></span><span class="scary-only scary-eye se2"></span><span class="scary-only scary-thorn st1"></span><span class="scary-only scary-thorn st2"></span>
+          </div>
+
+
+          <div class="room-ambient" aria-hidden="true">
+            <i class="ambient-life a1">✦</i><i class="ambient-life a2">·</i><i class="ambient-life a3">♡</i><i class="ambient-life a4">·</i><i class="ambient-life a5">✧</i>
+            <span class="v09-butterfly">♡</span>
+            <span class="v09-flyer"></span>
+          </div>
+
+          <div class="world-message room-world-message">
+            <strong class="cool-only">Everything is throwable.</strong>
+            <strong class="cute-only">Yes, you can pick up the bunny.</strong>
+            <span class="cool-only">Choose a drop tool, click the habitat, and watch the locals react.</span>
+            <span class="cute-only">Drop a snack, pet a friend, or fill the meadow with toys.</span>
+          </div>
+
+          <div class="room-ground-surface" aria-hidden="true"><span>walkable ground</span></div>
+          <div class="physics-layer" data-physics-layer></div>
+
+          <div class="room-foreground" aria-hidden="true">
+            <span class="fg-grass g1"></span><span class="fg-grass g2"></span><span class="fg-grass g3"></span>
+            <span class="fg-leaf l1"></span><span class="fg-leaf l2"></span>
+          </div>
+
+          <aside class="creature-inspector" data-creature-inspector hidden>
+            <button type="button" data-creature-inspector-close aria-label="Close creature details">×</button>
+            <small>CREATURE</small><strong data-inspect-species>—</strong>
+            <span data-inspect-personality>—</span><b data-inspect-action>—</b>
+          </aside>
+
+          <div class="room-fallback" data-room-fallback hidden><strong class="cool-only">WORLD OFFLINE.</strong><strong class="cute-only">The little world stayed asleep. ♡</strong><span>The physics library could not load, but the rest of Web Worlds still works normally.</span></div>
+        </div>
+
+        <p class="physics-hint cool-only">Click empty space to drop the selected object. Click a creature to interact, or drag to throw.</p>
+        <p class="physics-hint cute-only">Click the meadow to drop the selected item. Click a tiny friend to pet it, or drag to toss it. ♡</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p class="cool-only">An ancient world running on modern browser physics.</p><p class="cute-only">Tiny friends sharing one very throwable garden. ♡</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div></div>
+    <div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div>
+  </footer>
+  <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
+</body>
+</html>

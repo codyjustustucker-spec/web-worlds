@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+  <!-- v0.24 Royal wallpaper: crown-led ornament only. No arch motif. -->
+  <g fill="none" stroke="#d8b45a" stroke-opacity=".25" stroke-width="1.8">
+    <path d="M54 82l8-15 10 12 12-18 12 18 10-12 8 15-6 23H60z"/>
+    <path d="M282 278l7-13 9 10 10-16 10 16 9-10 7 13-5 20h-42z"/>
+    <path d="M318 78l6-11 8 9 9-14 9 14 8-9 6 11-5 17h-36z"/>
+    <path d="M112 316l6-11 8 9 9-14 9 14 8-9 6 11-5 17h-36z"/>
+    <path d="M192 58l12 12-12 12-12-12zM238 346l10 10-10 10-10-10zM64 238l8 8-8 8-8-8z"/>
+    <path d="M0 210H420M210 0V420" stroke="#8c587d" stroke-opacity=".12"/>
+    <path d="M0 0L420 420M420 0L0 420" stroke="#8c587d" stroke-opacity=".10"/>
+  </g>
+  <g fill="#d8b45a" fill-opacity=".31">
+    <circle cx="150" cy="116" r="2.5"/><circle cx="344" cy="188" r="2.2"/><circle cx="94" cy="374" r="2.1"/><circle cx="258" cy="214" r="1.8"/>
+    <path d="M206 134l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+    <path d="M354 338l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+  </g>
+</svg>

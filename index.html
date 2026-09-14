@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cool">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web Worlds: an interactive collection of playful browser worlds, puzzles, experiments, 3D scenes, and living systems.">
+  <meta name="theme-color" content="#070a10">
+  <title>Web Worlds</title>
+  <script>
+    try {
+      const t = localStorage.getItem('cody-web-worlds-theme');
+      if (t === 'cute' || t === 'cool' || t === 'royal' || t === 'scary') document.documentElement.dataset.theme = t;
+    } catch (_) {}
+  </script>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/home.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body data-page="home" class="world-hub-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Web Worlds home" data-logo-secret>
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        <span class="brand-copy">
+          <strong>Web Worlds</strong>
+          <small class="cool-only" data-royal-text="ROYAL GATEWAY ♛">SYSTEM GATEWAY</small>
+          <small class="cute-only">TINY WORLD GATEWAY ♡</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+        <a href="index.html" data-room-link="home">Home</a>
+        <a href="playground/index.html" data-room-link="playground">Playground</a>
+        <a href="3d/index.html" data-room-link="3d">3D</a>
+        <a href="lab/index.html" data-room-link="lab">Lab</a>
+        <a href="room/index.html" data-room-link="room">Room</a>
+        <a href="tunnel/index.html" data-room-link="tunnel">Tunnel</a>
+        <a href="about/index.html" data-room-link="about">About</a>
+        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+      </nav>
+
+      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+        <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
+        <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
+        <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
+      </div>
+
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hub-hero">
+      <div class="particle-field" data-particles aria-hidden="true"></div>
+      <div class="hub-preview-atmosphere" data-hub-preview aria-hidden="true"><i></i><i></i><i></i><i></i><span></span><b></b></div>
+
+      <div class="container hub-hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow cool-only" data-royal-text="COURT / PASSAGES OPEN">SYSTEM / ROUTES ONLINE</p>
+          <p class="eyebrow cute-only">PICK A LITTLE WORLD ♡</p>
+
+          <h1><span data-theme-copy="home.hero.line1">Pick a signal.</span><br><span data-theme-copy="home.hero.line2">Enter a system.</span></h1>
+
+          <p class="lede" data-theme-copy="home.hero.lede">Six routes are open. None of them behave quite the same.</p>
+
+          <div class="hero-actions">
+            <a class="button cool-only" href="#world-map" data-royal-text="Choose a passage ↓">Choose a route ↓</a>
+            <a class="button cute-only" href="#world-map">Choose a world ♡</a>
+            <a class="text-button" href="playground/index.html">
+              <span class="cool-only">Enter somewhere strange →</span>
+              <span class="cute-only">Go play →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="world-system reveal" aria-label="Orbiting navigation to Web Worlds rooms">
+          <div class="world-system-stars" aria-hidden="true"></div>
+          <div class="world-sun" aria-hidden="true">
+            <span>CW</span>
+            <small class="cool-only" data-royal-text="ROYAL WORLDS ♛">WEB WORLDS</small>
+            <small class="cute-only">WORLD HUB ♡</small>
+          </div>
+
+          <div class="world-orbit orbit-playground">
+            <a class="world-planet" href="playground/index.html" data-world-preview="playground" aria-label="Open Playground">
+              <span class="planet-body planet-playground">
+                <b>◎</b><small>Playground</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.playground">find the way</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="world-orbit orbit-lab">
+            <a class="world-planet" href="lab/index.html" data-world-preview="lab" aria-label="Open Lab">
+              <span class="planet-body planet-lab">
+                <b>⌁</b><small>Lab</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.lab">touch the machinery</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="world-orbit orbit-3d">
+            <a class="world-planet" href="3d/index.html" data-world-preview="3d" aria-label="Open 3D Space">
+              <span class="planet-body planet-3d">
+                <b>◇</b><small>3D</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.3d">leave the flat world</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="world-orbit orbit-room">
+            <a class="world-planet" href="room/index.html" data-world-preview="room" aria-label="Open Room">
+              <span class="planet-body planet-room">
+                <b>✦</b><small>Room</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.room">something is moving</em>
+              </span>
+            </a>
+          </div>
+          <div class="world-orbit orbit-tunnel">
+            <a class="world-planet" href="tunnel/index.html" data-world-preview="tunnel" aria-label="Open Tunnel">
+              <span class="planet-body planet-tunnel">
+                <b>◉</b><small>Tunnel</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.tunnel">fall through the signal</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="world-orbit orbit-about">
+            <a class="world-planet" href="about/index.html" data-world-preview="about" aria-label="Open About">
+              <span class="planet-body planet-about">
+                <b>◈</b><small>About</small>
+                <em class="planet-flavor" data-theme-copy="home.orbit.about">behind the worlds</em>
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section world-directory-section" id="world-map">
+      <div class="container">
+        <div class="section-heading reveal hub-heading">
+          <div>
+            <p class="eyebrow" data-theme-copy="home.directory.eyebrow">ROUTE MAP</p>
+            <h2 data-theme-copy="home.directory.title">Choose a door.</h2>
+          </div>
+          <p data-theme-copy="home.directory.note">Each route runs a different experiment.</p>
+        </div>
+
+        <div class="world-directory">
+          <a class="world-route route-playground reveal" href="playground/index.html" data-world-preview="playground">
+            <span class="route-index">01</span>
+            <span class="route-symbol">◎</span>
+            <span class="route-copy">
+              <small class="cool-only" data-royal-text="TRIAL / PUZZLE" data-scary-text="TRIAL / LOCKED">ROUTE / PUZZLE</small>
+              <small class="cute-only">SECRET PATH ♡</small>
+              <strong>Playground</strong>
+              <em class="cool-only" data-royal-text="Clear the royal trial." data-scary-text="Find what opens the way.">Find the way through.</em>
+              <em class="cute-only">Move things. Find things. Escape.</em>
+            </span>
+            <span class="route-enter cool-only" data-royal-text="ENTER TRIAL →" data-scary-text="GO BELOW →">ENTER →</span>
+            <span class="route-enter cute-only">GO PLAY →</span>
+          </a>
+
+          <a class="world-route route-3d reveal" href="3d/index.html" data-world-preview="3d">
+            <span class="route-index">02</span>
+            <span class="route-symbol">◇</span>
+            <span class="route-copy">
+              <small class="cool-only" data-royal-text="ROUTE / RELIC SPACE" data-scary-text="ROUTE / WATCHING SPACE">ROUTE / DEPTH</small>
+              <small class="cute-only">FLOATY PLACE ✦</small>
+              <strong>3D Space</strong>
+              <em class="cool-only" data-royal-text="Turn the relics in open space." data-scary-text="Turn what watches in the dark.">Step outside the flat world.</em>
+              <em class="cute-only">Spin a tiny dream around.</em>
+            </span>
+            <span class="route-enter cool-only" data-royal-text="ENTER COURT →" data-scary-text="LOOK IN →">ENTER →</span>
+            <span class="route-enter cute-only">FLOAT IN →</span>
+          </a>
+
+          <a class="world-route route-lab reveal" href="lab/index.html" data-world-preview="lab">
+            <span class="route-index">03</span>
+            <span class="route-symbol">⌁</span>
+            <span class="route-copy">
+              <small class="cool-only" data-royal-text="ROUTE / WORKSHOP" data-scary-text="ROUTE / ODDITIES">ROUTE / TEST BENCH</small>
+              <small class="cute-only">GADGET TABLE ☆</small>
+              <strong>Lab</strong>
+              <em class="cool-only" data-royal-text="Test the court machinery." data-scary-text="Touch the strange machinery.">Touch the machinery.</em>
+              <em class="cute-only">Poke all the weird little toys.</em>
+            </span>
+            <span class="route-enter cool-only" data-royal-text="INSPECT →" data-scary-text="DISTURB →">ENTER →</span>
+            <span class="route-enter cute-only">POKE →</span>
+          </a>
+
+          <a class="world-route route-room reveal" href="room/index.html" data-world-preview="room">
+            <span class="route-index">04</span>
+            <span class="route-symbol">✦</span>
+            <span class="route-copy">
+              <small class="cool-only" data-royal-text="ROUTE / MENAGERIE" data-scary-text="ROUTE / HAUNT">ROUTE / LIVING SYSTEM</small>
+              <small class="cute-only">TINY GARDEN ♡</small>
+              <strong>Room</strong>
+              <em class="cool-only" data-royal-text="The royal menagerie is awake." data-scary-text="Something in the dark is moving.">Something in here is moving.</em>
+              <em class="cute-only">There are little friends in here.</em>
+            </span>
+            <span class="route-enter cool-only" data-royal-text="ENTER COURT →" data-scary-text="GO INSIDE →">ENTER →</span>
+            <span class="route-enter cute-only">SAY HI →</span>
+          </a>
+
+          <a class="world-route route-tunnel reveal" href="tunnel/index.html">
+            <span class="route-index">05</span>
+            <span class="route-symbol">◉</span>
+            <span class="route-copy">
+              <small class="cool-only">ROUTE / SPATIAL TUNNEL</small>
+              <small class="cute-only">SPARKLY HOLE ✦</small>
+              <strong>Tunnel</strong>
+              <em class="cool-only">A compressed psychedelic descent.</em>
+              <em class="cute-only">Fall through something impossible and very colorful.</em>
+            </span>
+            <span class="route-enter cool-only">DESCEND →</span>
+            <span class="route-enter cute-only">FALL IN →</span>
+          </a>
+          <a class="world-route route-about reveal" href="about/index.html" data-world-preview="about">
+            <span class="route-index">06</span>
+            <span class="route-symbol">◈</span>
+            <span class="route-copy">
+              <small class="cool-only" data-royal-text="ROUTE / ARCHITECT" data-scary-text="ROUTE / ORIGIN">ROUTE / CREATOR</small>
+              <small class="cute-only">WHO MADE THIS? ♡</small>
+              <strong>About</strong>
+              <em class="cool-only" data-royal-text="Meet the architect behind the court." data-scary-text="Meet whoever built the strange doors.">Meet the builder behind the worlds.</em>
+              <em class="cute-only">Meet the human behind the tiny worlds.</em>
+            </span>
+            <span class="route-enter cool-only" data-royal-text="AUDIENCE →" data-scary-text="LOOK BEHIND →">OPEN →</span>
+            <span class="route-enter cute-only">SAY HI →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>Web Worlds</strong>
+        <p class="cool-only" data-royal-text="Six passages. One gilded court." data-scary-text="Six doors. One restless house.">Six routes. One shifting system.</p>
+        <p class="cute-only">Six little worlds sharing one sky. ♡</p>
+      </div>
+      <div class="footer-links">
+        <a href="playground/index.html">Playground</a>
+        <a href="3d/index.html">3D</a>
+        <a href="lab/index.html">Lab</a>
+        <a href="room/index.html">Room</a>
+        <a href="tunnel/index.html">Tunnel</a>
+        <a href="about/index.html">About</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>Web Worlds</span>
+      <span class="cool-only">SYSTEM / ONLINE</span>
+      <span class="cute-only">WORLD / SPARKLY ♡</span>
+    </div>
+  </footer>
+
+  <div class="world-entry-transition" data-world-entry aria-hidden="true"><span data-world-entry-symbol>✦</span><strong data-world-entry-label>ENTERING WORLD</strong></div>
+  <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>
+</body>
+</html>
