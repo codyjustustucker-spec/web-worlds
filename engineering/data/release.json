@@ -1,0 +1,23 @@
+{
+  "version": "0.27",
+  "name": "Production Hardening + Full-Stack Proof",
+  "verifiedDate": "2026-09-14",
+  "commit": null,
+  "runtime": "Static HTML/CSS/JavaScript + optional Cloudflare Worker/D1",
+  "deployment": {
+    "platform": "Cloudflare Pages + Cloudflare Worker/D1",
+    "source": "GitHub main",
+    "url": "https://web-worlds.pages.dev",
+    "backend": "Deployment endpoint intentionally unconfigured in source artifact"
+  },
+  "tooling": [
+    "Node.js",
+    "ESLint",
+    "Playwright",
+    "axe-core",
+    "Lighthouse",
+    "GitHub Actions",
+    "Cloudflare Wrangler",
+    "D1"
+  ]
+}

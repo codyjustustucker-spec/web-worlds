@@ -2,6 +2,7 @@
   const root = document.documentElement;
   const body = document.body;
   const config = window.siteConfig || {};
+  const core = window.WWCore || {};
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
   const isSmall = window.matchMedia('(max-width: 760px)').matches;
@@ -14,7 +15,7 @@
   [...new Set([...royalTextNodes, ...scaryTextNodes])].forEach((node) => { if (!node.dataset.baseText) node.dataset.baseText = node.textContent; });
 
   function setTheme(theme, persist = true) {
-    const next = ['cute','royal','scary'].includes(theme) ? theme : 'cool';
+    const next = core.normalizeTheme ? core.normalizeTheme(theme) : (['cute','royal','scary'].includes(theme) ? theme : 'cool');
     root.dataset.theme = next;
     themeButtons.forEach((button) => {
       const selected = button.dataset.themeChoice === next;
@@ -61,6 +62,14 @@
   }
 
   const page = body.dataset.page;
+  window.WebWorldsDiagnostics = {
+    booted: true,
+    version: config.version || 'unknown',
+    page: page || 'unknown',
+    reducedMotion: reduceMotion,
+    coarsePointer: coarsePointer,
+    startedAt: new Date().toISOString()
+  };
   document.querySelectorAll('[data-room-link]').forEach((link) => {
     if (link.dataset.roomLink === page) link.setAttribute('aria-current', 'page');
   });

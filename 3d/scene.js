@@ -5,12 +5,13 @@
   const loading = document.querySelector('[data-three-loading]');
   if (!canvas || !stage) return;
 
-  const failScene = () => {
+  const failScene = (error = new Error('3D scene unavailable')) => {
     if (loading) loading.hidden = true;
     fallback?.removeAttribute('hidden');
     stage.classList.add('has-failed');
+    window.WWRuntime?.report('3d', error, { fatal:false });
   };
-  if (!window.THREE) { failScene(); return; }
+  if (!window.THREE) { failScene(new Error('Three.js failed to load')); return; }
 
   const THREE = window.THREE;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -45,7 +46,7 @@
 
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, powerPreference:'high-performance' }); }
-  catch (error) { console.error('WebGL renderer unavailable', error); failScene(); return; }
+  catch (error) { console.error('WebGL renderer unavailable', error); failScene(error); return; }
 
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, smallScreen ? 1.1 : 1.55));
   renderer.outputColorSpace = THREE.SRGBColorSpace;

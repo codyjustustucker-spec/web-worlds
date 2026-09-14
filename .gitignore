@@ -1,3 +1,15 @@
 .DS_Store
 Thumbs.db
 .vscode/
+node_modules/
+playwright-report/
+test-results/
+reports/
+coverage/
+.env
+.env.*
+!.env.example
+
+.wrangler/
+.dev.vars
+.dev.vars.*

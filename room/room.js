@@ -5,12 +5,13 @@
   const loading = document.querySelector('[data-room-loading]');
   if (!worldEl || !layer) return;
 
-  const failWorld = () => {
+  const failWorld = (error = new Error('Physics world unavailable')) => {
     if (loading) loading.hidden = true;
     fallback?.removeAttribute('hidden');
     worldEl.classList.add('has-failed');
+    window.WWRuntime?.report('room', error, { fatal:false });
   };
-  if (!window.Matter) { failWorld(); return; }
+  if (!window.Matter) { failWorld(new Error('Matter.js failed to load')); return; }
 
   const { Engine, World, Bodies, Body, Sleeping, Events } = window.Matter;
   const engine = Engine.create({ enableSleeping: true });

@@ -1,7 +1,12 @@
 window.siteConfig = {
   siteName: "Web Worlds",
   siteShortName: "WEB WORLDS",
-  version: "0.25",
+  version: "0.27",
+  backend: {
+    apiBase: "",
+    scoreModes: { desktop: "brick-breaker", mobile: "brick-breaker-mobile" },
+    note: "Set apiBase to the deployed Cloudflare Worker URL ending in /api."
+  },
   resumeUrl: "https://cody-portfolio-3ae.pages.dev",
   githubUrl: "https://github.com/codyjustustucker-spec",
   themeStorageKey: "cody-web-worlds-theme",
@@ -12,7 +17,8 @@ window.siteConfig = {
     { id:"lab", label:"Lab", href:"lab/", symbol:"⌁" },
     { id:"room", label:"Room", href:"room/", symbol:"✦" },
     { id:"tunnel", label:"Tunnel", href:"tunnel/", symbol:"◉" },
-    { id:"about", label:"About", href:"about/", symbol:"◈" }
+    { id:"about", label:"About", href:"about/", symbol:"◈" },
+    { id:"engineering", label:"Engineering", href:"engineering/", symbol:"⚙" }
   ],
   // Short parallel copy keeps theme changes expressive without making layouts jump.
   themeCopy: {
@@ -74,8 +80,11 @@ window.siteConfig = {
     "about.worlds.eyebrow": { cool:"WEB WORLDS", cute:"LITTLE WORLDS ♡", royal:"ROYAL WORLDS ♛", scary:"STRANGE WORLDS ☾" },
     "about.worlds.title": { cool:"Back to the experiments.", cute:"Back to the little worlds.", royal:"Return to the royal worlds.", scary:"Return to the strange worlds." },
     "about.worlds.note": { cool:"The experiments stay separate from the professional links, but they share one frontend system.", cute:"The little worlds stay apart from the work links, but they all share one playful system.", royal:"The exhibits stay apart from the professional links, while sharing one crafted frontend system.", scary:"The strange worlds stay apart from the work links, while sharing one quietly connected system." },
-    "about.worlds.button": { cool:"Open World Map →", cute:"Open Little Map →", royal:"Open Court Map →", scary:"Open Dark Map →" }
+    "about.worlds.button": { cool:"Open World Map →", cute:"Open Little Map →", royal:"Open Court Map →", scary:"Open Dark Map →" },
+    "engineering.eyebrow": { cool:"ENGINEERING / PROOF", cute:"ENGINEERING / SPARKLY GUTS ♡", royal:"ENGINEERING / WORKS OF THE COURT ♛", scary:"ENGINEERING / BENEATH THE FLOORBOARDS ☾" },
+    "engineering.title": { cool:"Under the hood.", cute:"Tiny worlds. Serious machinery.", royal:"Inspect the machinery.", scary:"See what keeps it alive." },
+    "engineering.lede": { cool:"Measured quality, automated tests, accessibility work, performance evidence, and the delivery pipeline behind Web Worlds.", cute:"Real tests, real measurements, careful accessibility, and all the tidy machinery keeping the tiny worlds alive.", royal:"Measured quality, automated trials, accessibility work, performance evidence, and the delivery pipeline beneath the exhibit.", scary:"Real tests, measured performance, accessibility work, and the machinery humming behind the walls." }
   }
 };
 // Backward-compatible alias for older code that still expects rooms.
-window.siteConfig.rooms = window.siteConfig.routes.filter((route) => !["home","about"].includes(route.id));
+window.siteConfig.rooms = window.siteConfig.routes.filter((route) => !["home","about","engineering"].includes(route.id));

@@ -1,0 +1,22 @@
+{
+  "releases": [
+    {
+      "version": "v0.26",
+      "date": "2026-09-14",
+      "performance": null,
+      "unitCases": 13,
+      "apiCases": 0,
+      "trackedBytes": 1688803,
+      "note": "Engineering foundation baseline."
+    },
+    {
+      "version": "v0.27",
+      "date": "2026-09-14",
+      "performance": null,
+      "unitCases": 17,
+      "apiCases": 14,
+      "trackedBytes": 1721036,
+      "note": "Full-stack proof release; source size is filled by the quality report generator."
+    }
+  ]
+}

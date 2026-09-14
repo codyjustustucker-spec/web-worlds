@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "web-worlds-scores",
+  "main": "worker/src/index.mjs",
+  "compatibility_date": "2026-09-14",
+  "vars": {
+    "ALLOWED_ORIGIN": "https://web-worlds.pages.dev",
+    "ENVIRONMENT": "production"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "web-worlds-scores",
+      // Replace after creating the production D1 database.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "worker/migrations"
+    }
+  ]
+}

@@ -6,6 +6,13 @@
   <meta name="description" content="A living theme-reactive physics world inside Web Worlds.">
   <meta name="theme-color" content="#070a10">
   <title>Room | Web Worlds</title>
+  <link rel="canonical" href="https://web-worlds.pages.dev/room/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Worlds">
+  <meta property="og:title" content="Room | Web Worlds">
+  <meta property="og:description" content="A living theme-reactive physics world inside Web Worlds.">
+  <meta property="og:url" content="https://web-worlds.pages.dev/room/">
+  <meta name="twitter:card" content="summary">
   <script>
     try {
       const t = localStorage.getItem('cody-web-worlds-theme');
@@ -14,6 +21,8 @@
   </script>
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles/room.css">
+  <script src="../lib/core-utils.js" defer></script>
+  <script src="../lib/runtime-status.js" defer></script>
   <script src="../config.js" defer></script>
   <script src="../script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js" defer></script>
@@ -28,7 +37,7 @@
         <span class="brand-mark" aria-hidden="true">CW</span>
         <span class="brand-copy"><strong>Web Worlds</strong><small class="cool-only" data-royal-text="ROYAL MENAGERIE ♛" data-scary-text="NIGHT MENAGERIE ☾">LIVING PREHISTORIC WORLD</small><small class="cute-only">LITTLE GARDEN WORLD ♡</small></span>
       </a>
-      <nav class="site-nav" id="site-nav" aria-label="World navigation">
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="../index.html" data-room-link="home">Home</a>
         <a href="../playground/index.html" data-room-link="playground">Playground</a>
         <a href="../3d/index.html" data-room-link="3d">3D</a>
@@ -36,9 +45,10 @@
         <a href="../room/index.html" data-room-link="room">Room</a>
         <a href="../tunnel/index.html" data-room-link="tunnel">Tunnel</a>
         <a href="../about/index.html" data-room-link="about">About</a>
-        <div class="theme-switch mobile-theme" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
+        <a href="../engineering/index.html" data-room-link="engineering">Engineering</a>
+        <div class="theme-switch mobile-theme" role="group" aria-label="Choose visual theme"><button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button><button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button><button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button></div>
       </nav>
-      <div class="theme-switch desktop-theme" aria-label="Choose visual theme">
+      <div class="theme-switch desktop-theme" role="group" aria-label="Choose visual theme">
         <button type="button" data-theme-choice="cool" aria-pressed="true">Cool</button>
         <button type="button" data-theme-choice="cute" aria-pressed="false">Cute ♡</button>
         <button type="button" data-theme-choice="royal" aria-pressed="false">Royal ♛</button><button type="button" data-theme-choice="scary" aria-pressed="false">Scary ☾</button>
@@ -179,7 +189,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p class="cool-only">An ancient world running on modern browser physics.</p><p class="cute-only">Tiny friends sharing one very throwable garden. ♡</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a></div></div>
+    <div class="container footer-grid"><div class="footer-brand"><strong>Web Worlds</strong><p class="cool-only">An ancient world running on modern browser physics.</p><p class="cute-only">Tiny friends sharing one very throwable garden. ♡</p></div><div class="footer-links"><a href="../index.html">Home</a><a href="../playground/index.html">Playground</a><a href="../3d/index.html">3D</a><a href="../lab/index.html">Lab</a><a href="../room/index.html">Room</a><a href="../tunnel/index.html">Tunnel</a><a href="../about/index.html">About</a><a href="../engineering/index.html">Engineering</a></div></div>
     <div class="container footer-bottom"><span>Web Worlds</span><span>Current theme: <span data-theme-label>Cool mode</span></span></div>
   </footer>
   <div class="secret-toast" role="status" aria-live="polite">Tiny secret found. The page approves. ✦</div>

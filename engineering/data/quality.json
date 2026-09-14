@@ -1,0 +1,81 @@
+{
+  "verifiedAt": "2026-09-14",
+  "artifactVerification": {
+    "status": "pass",
+    "note": "Static artifact QA is verified locally. Browser CI remains authoritative after the release branch is pushed."
+  },
+  "automatedSuite": {
+    "status": "info",
+    "note": "17 unit and 14 Worker API tests pass locally; Playwright and axe suites are configured for CI. Browser execution is not claimed until the release branch runs in CI.",
+    "unitCases": 17,
+    "apiCases": 14,
+    "e2eCases": 18,
+    "a11yCases": 8
+  },
+  "staticAnalysis": {
+    "localReferencesChecked": 236
+  },
+  "sourceSize": {
+    "javascriptBytes": 250177,
+    "cssBytes": 1322785,
+    "htmlBytes": 144358,
+    "totalTrackedBytes": 1721036
+  },
+  "lighthouse": {
+    "performance": null,
+    "accessibility": null,
+    "bestPractices": null,
+    "seo": null,
+    "note": "Not measured in this artifact environment. Run npm run audit:lighthouse after dependency install and record the release snapshot rather than inventing a score."
+  },
+  "checks": [
+    {
+      "label": "JavaScript syntax",
+      "status": "pass",
+      "result": "32 files",
+      "note": "Node parsed every project JavaScript file, including Worker and test sources."
+    },
+    {
+      "label": "Unit tests",
+      "status": "pass",
+      "result": "17 passed",
+      "note": "Shared utilities, API client behavior, route configuration, and quality-data honesty checks pass."
+    },
+    {
+      "label": "Worker API tests",
+      "status": "pass",
+      "result": "14 passed",
+      "note": "Validation, health, persistence behavior, sorting, limits, malformed input, rate limiting, database failure, and CORS are covered without production D1."
+    },
+    {
+      "label": "Local references",
+      "status": "pass",
+      "result": "236 checked",
+      "note": "All local href/src targets resolved in the release tree."
+    },
+    {
+      "label": "Structural HTML audit",
+      "status": "pass",
+      "result": "9 pages",
+      "note": "No duplicate IDs, missing main/skip targets, implicit buttons, or unlabeled images were found."
+    },
+    {
+      "label": "Headless Chromium routes",
+      "status": "pending",
+      "result": "verification pending",
+      "note": "Playwright covers every primary route; release CI becomes authoritative after push."
+    },
+    {
+      "label": "Accessibility automation",
+      "status": "pending",
+      "result": "CI pending",
+      "note": "axe-core scans are configured for all eight primary routes."
+    },
+    {
+      "label": "Lighthouse release audit",
+      "status": "pending",
+      "result": "not measured",
+      "note": "No decorative performance score is committed without a reproducible audit."
+    }
+  ]
+}
